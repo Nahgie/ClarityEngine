@@ -16,7 +16,7 @@ void SceneWizard::SceneCreater()
         {L"Test", new TestScene}
     };
 
-    _sceneRegs = scenes;    //COPIED SCENE DATAS
+    _sceneRegs = scenes;             //COPIED SCENE DATAS
 }
 
 void SceneWizard::SceneRegister()    //DO NOT TOUCH IT
@@ -27,5 +27,6 @@ void SceneWizard::SceneRegister()    //DO NOT TOUCH IT
     {
         SceneMNGR->SaveScene(scene.first, scene.second);
     }
+
     SceneMNGR->LoadScene(L"Default");
 }

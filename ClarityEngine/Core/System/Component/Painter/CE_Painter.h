@@ -46,26 +46,26 @@ public:
     virtual ~CE_Painter();
 
     //Scale
-    void SetScale(const FLOAT& x, const FLOAT& y) { _imgScale.x = x; _imgScale.y = y; }
     const Vec2& GetScale() const { return _imgScale; }
+    void SetScale(const FLOAT& x, const FLOAT& y) { _imgScale.x = x; _imgScale.y = y; }
 
     //Rotation
-    void SetAngle(const FLOAT& deg) { _imgRotation = deg; }
     const FLOAT& GetAngle() const { return _imgRotation; }
+    void SetAngle(const FLOAT& deg) { _imgRotation = deg; }
 
     //Translate
+    const Vec2& GetPos() const { return _imgPosition; }
     void SetPos(const FLOAT& x, const FLOAT& y) { _imgPosition.x = x; _imgPosition.y = y; }
     void SetX(const FLOAT& x) { _imgPosition.x = x; }
     void SetY(const FLOAT& y) { _imgPosition.y = y; }
-    const Vec2& GetPos() const { return _imgPosition; }
 
     //Depth
-    void SetDepth(const FLOAT& z) { _imgDepth = z; }
     const FLOAT& GetDepth() { return _imgDepth; }
+    void SetDepth(const FLOAT& z) { _imgDepth = z; }
 
     //Pivot
-    void SetPivot(const FLOAT& x, const FLOAT& y) { _imgPivot.x = x; _imgPivot.y = y; }
     const Vec2& GetPivot() const { return _imgPivot; }
+    void SetPivot(const FLOAT& x, const FLOAT& y) { _imgPivot.x = x; _imgPivot.y = y; }
 
     //ImgFlip
     void SetFlip(const Dir& dir = Dir::DEFAULT);

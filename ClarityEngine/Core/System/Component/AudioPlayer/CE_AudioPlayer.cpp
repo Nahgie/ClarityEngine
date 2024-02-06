@@ -8,16 +8,21 @@ CE_AudioPlayer::CE_AudioPlayer(const std::wstring& path)
 
 CE_AudioPlayer::~CE_AudioPlayer()
 {
-
+    CE_AudioPlayer::Clear();
 }
 
 void CE_AudioPlayer::Play()
 {
-    _soundInstance = _soundEffect->CreateInstance();
-    _soundInstance->Play();
+    _soundInstances.emplace_back(_soundEffect->CreateInstance());
+    _soundInstances.back()->Play();
 }
 
 void CE_AudioPlayer::Stop()
 {
-    _soundInstance->Stop();
+    _soundInstances.back()->Stop();
+}
+
+void CE_AudioPlayer::Clear()
+{
+    _soundInstances.clear();
 }

@@ -23,13 +23,15 @@
 #include <map>
 
 //CPP STL
-#include <limits>
 #include <numeric>
 #include <algorithm>
 #include <random>
 #include <chrono>
 #include <thread>
 #include <mutex>
+
+//tinyXML2
+#include "tinyXML2/Inc/tinyxml2.h"
 
 //DirectX
 #include <d3d11.h>
@@ -75,8 +77,10 @@
 //This lib supports x64(AMD64) only and should be built with /MT or /MTd compiler options
 #ifdef _DEBUG
     #pragma comment(lib, "DirectXTK_DBG.lib")
+    #pragma comment(lib, "tinyXML2_DBG.lib")
 #else
     #pragma comment(lib, "DirectXTK.lib")
+    #pragma comment(lib, "tinyXML2.lib")
 #endif
 
 /*              Engine FrameWork              */

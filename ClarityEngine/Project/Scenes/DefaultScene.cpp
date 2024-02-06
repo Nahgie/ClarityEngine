@@ -15,7 +15,6 @@ void DefaultScene::Begin()
     _obj->SetScale(2.f, 2.f);
     _obj->SetPos(Win32MNGR->GetWidth() * 0.5f, Win32MNGR->GetHeight() * 0.5f);
     AddObj(_obj);
-
 }
 
 UINT32 SceneCnt = 0;    //TestCode

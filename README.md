@@ -13,13 +13,14 @@
 
 
 ## 사용한 언어 및 외부 라이브러리
-| 항목                      | URL                                             |
-|--------------------------|--------------------------------------------------|
-| C++20                    | [CPP20 Ref](https://en.cppreference.com/w/cpp/20)|
-|  C17                     | [C17 Ref](https://en.cppreference.com/w/c)       |
-| DirectXTK for DirectX 11 | [MS DXTK](https://github.com/microsoft/DirectXTK)|
+| 항목                      | URL                                                |
+|--------------------------|-----------------------------------------------------|
+| C++20                    | [CPP20 Ref](https://en.cppreference.com/w/cpp/20)   |
+| tinyXML2                 | [tinyXML2](https://github.com/leethomason/tinyxml2) |
+| DirectXTK for DirectX 11 | [MS DXTK](https://github.com/microsoft/DirectXTK)   |
 
 ## 추가 정보
 
 Win32(x86) 빌드 미지원
+
 일부 기능 미구현

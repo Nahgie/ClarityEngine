@@ -6,6 +6,8 @@ private:
 
     std::shared_ptr<Animator> _obj = nullptr;
 
+    std::shared_ptr<AudioPlayer> _snd = nullptr;
+
 public:
 
     DefaultScene() { Begin(); }

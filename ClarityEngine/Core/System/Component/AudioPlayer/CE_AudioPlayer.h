@@ -6,7 +6,7 @@ private:
 
     DirectX::AudioEngine _audioEngine;
     std::unique_ptr<DirectX::SoundEffect> _soundEffect;
-    std::unique_ptr<DirectX::SoundEffectInstance> _soundInstance;
+    std::vector<std::unique_ptr<DirectX::SoundEffectInstance>> _soundInstances;
 
 public:
 
@@ -15,6 +15,7 @@ public:
 
     void Play();
     void Stop();
+    void Clear();
 };
 
 using AudioPlayer = CE_AudioPlayer; //Redefined

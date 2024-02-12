@@ -23,7 +23,6 @@ CE_Painter::~CE_Painter()
 
 }
 
-
 void CE_Painter::Load()
 {
     HRESULT hr = DirectX::CreateWICTextureFromFile

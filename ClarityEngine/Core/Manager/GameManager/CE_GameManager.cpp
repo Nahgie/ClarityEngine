@@ -3,6 +3,7 @@
 
 void CE_GameManager::Init()
 {
+    GraphicsMNGR->Init();
     SceneMNGR->Init();
 
     //Run Threads

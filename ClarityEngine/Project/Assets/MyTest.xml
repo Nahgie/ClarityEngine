@@ -1,0 +1,10 @@
+<MyTest>
+    <add1>100</add1>
+    <add2>11.110000</add2>
+    <txt1>asdasdasdasdasd</txt1>
+    <add3>0.123123</add3>
+    <txt2>asdasdasdasdasd</txt2>
+    <add4>400</add4>
+    <txt3>asdasdasdasdasd</txt3>
+    <Attribute asdasd1="100" asdasd2="11.110000" asdasd3="0.123123" asdasd4="400"/>
+</MyTest>

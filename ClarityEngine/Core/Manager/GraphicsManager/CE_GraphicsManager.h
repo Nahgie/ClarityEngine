@@ -40,12 +40,10 @@ private:
 
 public:
 
-    CE_GraphicsManager();
-    ~CE_GraphicsManager();
-
     ComPtr<ID3D11Device> GetDevice() const { return _dev; }
     ComPtr<ID3D11DeviceContext> GetDeviceContext() const { return _devContext; }
 
+    void Init();
     void SetRenderFrameLimitMode(const RenderFrameLimitMode& state);
     void RenderBegin();
     void RenderEnd();

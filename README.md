@@ -16,7 +16,7 @@
 | 항목                      | URL                                                |
 |--------------------------|-----------------------------------------------------|
 | C++20                    | [CPP20 Ref](https://en.cppreference.com/w/cpp/20)   |
-| tinyXML2                 | [tinyXML2](https://github.com/leethomason/tinyxml2) |
+| TinyXML2                 | [TinyXML2](https://github.com/leethomason/tinyxml2) |
 | DirectXTK for DirectX 11 | [MS DXTK](https://github.com/microsoft/DirectXTK)   |
 
 ## 추가 정보

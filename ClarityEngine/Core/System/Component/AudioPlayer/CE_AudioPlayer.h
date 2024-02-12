@@ -13,7 +13,13 @@ public:
     CE_AudioPlayer(const std::wstring& path);
     ~CE_AudioPlayer();
 
-    void Play();
+    void Play(const bool& isLoop = false , const bool& shortLength = false);
+    void SetVolume(const FLOAT& volume);
+    void SetPitch(const FLOAT& pitch);
+
+    void Pause();
+    void Resume();
+
     void Stop();
     void Clear();
 };

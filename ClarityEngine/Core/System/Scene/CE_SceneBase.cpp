@@ -19,7 +19,22 @@ void CE_SceneBase::AddObj(std::shared_ptr<CE_GameObject> obj)
 void CE_SceneBase::DelObj(std::shared_ptr<CE_GameObject> obj)
 {
     auto objIt = std::find(_gameObject.begin(), _gameObject.end(), obj);
-    _gameObject.erase(objIt);
+
+    if (*objIt == obj)
+    {
+        _gameObject.erase(objIt);
+    }
+    else
+    {
+        WIN32::MessageBoxW
+        (
+            Win32MNGR->GetWindowHandle(),
+            L"Object not found",
+            L"CRITICAL ERROR",
+            MB_ICONERROR
+        );
+        assert(false);
+    }
 }
 
 void CE_SceneBase::Draw()

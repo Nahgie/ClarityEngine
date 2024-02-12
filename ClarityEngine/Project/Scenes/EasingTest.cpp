@@ -1,7 +1,7 @@
 ﻿#include "pch.h"
-#include "TestScene.h"
+#include "EasingTest.h"
 
-void TestScene::Begin()
+void EasingTest::Begin()
 {
     _obj = std::make_shared<Animator>
         (
@@ -17,12 +17,12 @@ void TestScene::Begin()
     AddObj(_obj);
 }
 
-void TestScene::Destroy()
+void EasingTest::Destroy()
 {
 
 }
 
-void TestScene::Update()
+void EasingTest::Update()
 {
     if (InputMNGR->KeyPressed('D'))
     {
@@ -47,7 +47,7 @@ void TestScene::Update()
     }
 }
 
-void TestScene::ASyncUpdate()
+void EasingTest::ASyncUpdate()
 {
 
 }

@@ -4,7 +4,9 @@
 /*           Include The Scene in this section           */
 
 #include "Project/Scenes/DefaultScene.h"
-#include "Project/Scenes/TestScene.h"
+#include "Project/Scenes/EasingTest.h"
+#include "Project/Scenes/FileIO_XML.h"
+#include "Project/Scenes/FileIO_BIN.h"
 
 /*        End of Scene Inclusion for this section        */
 
@@ -15,7 +17,9 @@ private:
     std::vector<std::pair<std::wstring, CE_SceneBase*>> _sceneRegs
     {
         {L"Default", new DefaultScene},
-        {L"Test", new TestScene}
+        {L"EASING", new EasingTest},
+        {L"FILE_IO_XML", new FileIO_XML},
+        {L"FILE_IO_BIN", new FileIO_BIN},
     };
 
 public:

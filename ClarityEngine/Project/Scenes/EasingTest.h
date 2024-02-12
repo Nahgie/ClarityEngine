@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-class TestScene final : public CE_SceneBase
+class EasingTest final : public CE_SceneBase
 {
 private:
 
@@ -8,13 +8,13 @@ private:
 
 public:
 
-    TestScene() { Begin(); }
-    ~TestScene() { Destroy(); }
+    EasingTest() { Begin(); }
+    ~EasingTest() { Destroy(); }
 
     void Begin() override;
     void Destroy() override;
     void Update() override;
     void ASyncUpdate() override;
 
-    TestScene* SceneInstance() { return new TestScene; }
+    EasingTest* SceneInstance() { return new EasingTest; }
 };

@@ -1,17 +1,12 @@
 ﻿#include "pch.h"
 #include "CE_GraphicsManager.h"
 
-CE_GraphicsManager::CE_GraphicsManager()
+void CE_GraphicsManager::Init()
 {
     CreateDevSC();
     CreateRTV();
     SetPipeline();
     SetViewport();
-}
-
-CE_GraphicsManager::~CE_GraphicsManager()
-{
-
 }
 
 void CE_GraphicsManager::CreateDevSC()

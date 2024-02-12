@@ -3,7 +3,7 @@
 
 constexpr UINT8 SECONDS(1 << 0);
 constexpr UINT8 FPS_NUM(1 << 0);
-constexpr UINT32 FPS_DEN(240);      //Target FPS
+constexpr UINT16 FPS_DEN(240);      //Target FPS
 
 class CE_GameManager final : public CE_Singleton<CE_GameManager>
 {
@@ -32,7 +32,7 @@ private:
 
 public:
 
-    const UINT32& GetTargetFPS() const { return FPS_DEN; }
+    const UINT16& GetTargetFPS() const { return FPS_DEN; }
 
     void Init();
     void GameQuit();

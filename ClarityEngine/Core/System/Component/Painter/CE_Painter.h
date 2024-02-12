@@ -29,8 +29,8 @@ protected:
 
 protected:
 
-    virtual void Load();    //Load the image into memory and prepare it for use as a texture
-    virtual void Setup();   //Process texture wrapping coordinates and other related information
+    void Load();    //Load the image into memory and prepare it for use as a texture
+    void Setup();   //Process texture wrapping coordinates and other related information
 
 public:
 

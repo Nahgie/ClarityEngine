@@ -15,3 +15,10 @@
 
 //Scene System
 #include "Core/System/Scene/CE_SceneBase.h"
+
+//File System
+#include "Core/System/Component/FileSystem/XML/CE_SaveXML.h"
+#include "Core/System/Component/FileSystem/XML/CE_LoadXML.h"
+
+#include "Core/System/Component/FileSystem/BIN/CE_BinSave.h"
+#include "Core/System/Component/FileSystem/BIN/CE_BinLoad.h"

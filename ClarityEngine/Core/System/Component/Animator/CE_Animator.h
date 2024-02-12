@@ -37,8 +37,8 @@ public:
         const UINT8& frame,
         const RenderDir& renderDir = RenderDir::HORIZONTAL,
         const Vec2& scale = { 1.f, 1.f },
-        const FLOAT& rot = 0,
-        const FLOAT& depth = 0
+        const FLOAT& rot = 0.f,
+        const FLOAT& depth = 0.f
     );
     ~CE_Animator();
 

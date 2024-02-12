@@ -5,6 +5,26 @@ LRESULT CE_Win32Manager::WndProc(HWND handle, UINT message, WPARAM wParam, LPARA
 {
     switch (message)
     {
+    case WM_MOUSEMOVE:
+        InputMNGR->MouseUpdate(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
+        break;
+
+    case WM_LBUTTONDOWN:
+        InputMNGR->MouseLeftUpdate(true);
+        break;
+
+    case WM_LBUTTONUP:
+        InputMNGR->MouseLeftUpdate(false);
+        break;
+
+    case WM_RBUTTONDOWN:
+        InputMNGR->MouseRightUpdate(true);
+        break;
+
+    case WM_RBUTTONUP:
+        InputMNGR->MouseRightUpdate(false);
+        break;
+
     case WM_CLOSE:
     case WM_DESTROY:
 

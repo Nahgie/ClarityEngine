@@ -1,12 +1,9 @@
 ﻿#pragma once
 
+//It is the fundamental structure for crafting a scene.
 class DefaultScene final : public CE_SceneBase
 {
 private:
-
-    std::shared_ptr<Animator> _obj = nullptr;
-
-    std::shared_ptr<AudioPlayer> _snd = nullptr;
 
 public:
 

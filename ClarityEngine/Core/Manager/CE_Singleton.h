@@ -15,8 +15,8 @@ protected:
     CE_Singleton(const CE_Singleton&) = delete;
     CE_Singleton& operator=(const CE_Singleton&) = delete;
 
-    CE_Singleton(CE_Singleton&&) = delete;
-    CE_Singleton& operator=(CE_Singleton&&) = delete;
+    CE_Singleton(const CE_Singleton&&) = delete;
+    CE_Singleton& operator=(const CE_Singleton&&) = delete;
 
 public:
 

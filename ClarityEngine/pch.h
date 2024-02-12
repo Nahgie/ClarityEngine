@@ -4,6 +4,7 @@
 
 //Windows
 #include <Windows.h>
+#include <windowsx.h>
 #include <wrl.h>
 
 //C (CPP PORTED)
@@ -31,7 +32,7 @@
 #include <mutex>
 
 //tinyXML2
-#include "tinyXML2/Inc/tinyxml2.h"
+#include "TinyXML2/Inc/tinyxml2.h"
 
 //DirectX
 #include <d3d11.h>
@@ -77,10 +78,10 @@
 //This lib supports x64(AMD64) only and should be built with /MT or /MTd compiler options
 #ifdef _DEBUG
     #pragma comment(lib, "DirectXTK_DBG.lib")
-    #pragma comment(lib, "tinyXML2_DBG.lib")
+    #pragma comment(lib, "TinyXML2_DBG.lib")
 #else
     #pragma comment(lib, "DirectXTK.lib")
-    #pragma comment(lib, "tinyXML2.lib")
+    #pragma comment(lib, "TinyXML2.lib")
 #endif
 
 /*              Engine FrameWork              */

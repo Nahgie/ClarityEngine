@@ -160,8 +160,8 @@
     <ClInclude Include="Core\System\CE_SystemObjects.h" />
     <ClInclude Include="Core\System\Component\Animator\CE_Animator.h" />
     <ClInclude Include="Core\System\Component\AudioPlayer\CE_AudioPlayer.h" />
-    <ClInclude Include="Core\System\Component\FileSystem\BIN\CE_BinLoad.h" />
-    <ClInclude Include="Core\System\Component\FileSystem\BIN\CE_BinSave.h" />
+    <ClInclude Include="Core\System\Component\FileSystem\Binary\CE_BinLoad.h" />
+    <ClInclude Include="Core\System\Component\FileSystem\Binary\CE_BinSave.h" />
     <ClInclude Include="Core\System\Component\FileSystem\XML\CE_LoadXML.h" />
     <ClInclude Include="Core\System\Component\FileSystem\XML\CE_SaveXML.h" />
     <ClInclude Include="Core\System\Component\Painter\CE_Painter.h" />
@@ -187,8 +187,8 @@
   <ItemGroup>
     <ClCompile Include="Core\System\Component\Animator\CE_Animator.cpp" />
     <ClCompile Include="Core\System\Component\AudioPlayer\CE_AudioPlayer.cpp" />
-    <ClCompile Include="Core\System\Component\FileSystem\BIN\CE_BinLoad.cpp" />
-    <ClCompile Include="Core\System\Component\FileSystem\BIN\CE_BinSave.cpp" />
+    <ClCompile Include="Core\System\Component\FileSystem\Binary\CE_BinLoad.cpp" />
+    <ClCompile Include="Core\System\Component\FileSystem\Binary\CE_BinSave.cpp" />
     <ClCompile Include="Core\System\Component\FileSystem\XML\CE_LoadXML.cpp" />
     <ClCompile Include="Core\System\Component\FileSystem\XML\CE_SaveXML.cpp" />
     <ClCompile Include="Core\System\Component\Painter\CE_Painter.cpp" />

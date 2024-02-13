@@ -5,7 +5,6 @@ void CE_GraphicsManager::Init()
 {
     CreateDevSC();
     CreateRTV();
-    SetPipeline();
     SetViewport();
 }
 
@@ -82,19 +81,6 @@ void CE_GraphicsManager::SetViewport()
     _viewport.Height = static_cast<FLOAT>(Win32MNGR->GetHeight());
     _viewport.MinDepth = 0.f;
     _viewport.MaxDepth = 1.f;
-}
-
-void CE_GraphicsManager::SetPipeline()
-{
-    _comState = std::make_unique<DirectX::CommonStates>(_dev.Get());
-
-    _devContext->OMSetBlendState(_comState->Opaque(), nullptr, 0xFFFFFFFF);
-    _devContext->OMSetDepthStencilState(_comState->DepthDefault(), 0);
-    _devContext->RSSetState(_comState->CullClockwise());
-
-    ID3D11SamplerState* sams[]{ _comState->LinearWrap() };
-    _devContext->VSSetSamplers(0, 1, sams);
-    _devContext->PSSetSamplers(0, 1, sams);
 }
 
 void CE_GraphicsManager::SetRenderFrameLimitMode(const RenderFrameLimitMode& state)

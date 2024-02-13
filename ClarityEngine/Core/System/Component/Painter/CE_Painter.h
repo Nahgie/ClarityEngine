@@ -8,11 +8,23 @@ enum class Dir : UINT8      //Dir is Direction
     BOTH = (HORIZONTAL | VERTICAL)
 };
 
+enum class SortMode : UINT8
+{
+    STACK = 0,      //Accumulates sprites and renders them all at once.
+    NO_WAIT = 1,    //Renders sprites immediately.
+    TEX_QUEUE = 2,  //Sorts sprites by texture and renders them.
+    FORWARD = 3,    //Draws sprites in order of decreasing depth (back to front).
+    BACKWARD = 4    //Draws sprites in order of increasing depth (front to back).
+};
+
 class CE_Painter : public CE_GameObject
 {
 protected:
 
     std::unique_ptr<DirectX::SpriteBatch> _texture;
+
+    //When rendering textures, use CommonStates to set states
+    std::unique_ptr<DirectX::CommonStates> _comState;
 
     ComPtr<ID3D11ShaderResourceView> _srv;
 

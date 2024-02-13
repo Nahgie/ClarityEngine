@@ -81,13 +81,13 @@
     <ClInclude Include="Core\System\Component\FileSystem\XML\CE_LoadXML.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Core\System\Component\FileSystem\BIN\CE_BinLoad.h">
+    <ClInclude Include="Core\System\Component\FileSystem\Binary\CE_BinLoad.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Project\Scenes\FileIO_XML.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Core\System\Component\FileSystem\BIN\CE_BinSave.h">
+    <ClInclude Include="Core\System\Component\FileSystem\Binary\CE_BinSave.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Project\Scenes\FileIO_BIN.h">
@@ -149,13 +149,13 @@
     <ClCompile Include="Core\System\Component\FileSystem\XML\CE_LoadXML.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Core\System\Component\FileSystem\BIN\CE_BinLoad.cpp">
+    <ClCompile Include="Core\System\Component\FileSystem\Binary\CE_BinLoad.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Project\Scenes\FileIO_XML.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Core\System\Component\FileSystem\BIN\CE_BinSave.cpp">
+    <ClCompile Include="Core\System\Component\FileSystem\Binary\CE_BinSave.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Project\Scenes\FileIO_BIN.cpp">

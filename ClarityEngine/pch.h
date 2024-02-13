@@ -7,6 +7,11 @@
 #include <windowsx.h>
 #include <wrl.h>
 
+//Windows MediaFoundation
+#include <mfapi.h>
+#include <mfidl.h>
+#include <mfreadwrite.h>
+
 //C (CPP PORTED)
 #include <cassert>
 
@@ -74,6 +79,10 @@
 #pragma comment(lib, "d3d11.lib")
 #pragma comment(lib, "d3dcompiler.lib")
 #pragma comment(lib, "dxgi.lib")
+
+#pragma comment(lib, "mfplat.lib")
+#pragma comment(lib, "mfreadwrite.lib")
+#pragma comment(lib, "mfuuid.lib")
 
 //This lib supports x64(AMD64) only and should be built with /MT or /MTd compiler options
 #ifdef _DEBUG

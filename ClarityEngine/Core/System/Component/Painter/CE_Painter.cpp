@@ -14,6 +14,9 @@ CE_Painter::CE_Painter
     _texture = std::make_unique<DirectX::SpriteBatch>(GraphicsDevContext.Get());
     assert(_texture);
 
+    _comState = std::make_unique<DirectX::CommonStates>(GraphicsDev.Get());
+    assert(_comState);
+
     CE_Painter::Load();
     CE_Painter::Setup();
 }
@@ -28,6 +31,7 @@ void CE_Painter::Load()
     HRESULT hr = DirectX::CreateWICTextureFromFile
     (
         GraphicsDev.Get(),
+        GraphicsDevContext.Get(),
         _path.c_str(),
         nullptr,
         _srv.GetAddressOf()
@@ -88,7 +92,7 @@ void CE_Painter::SetFlip(const Dir& dir)
 
 void CE_Painter::Render()
 {
-    _texture->Begin();
+    _texture->Begin(DirectX::SpriteSortMode_Deferred, _comState->NonPremultiplied());
 
     _texture->Draw
     (

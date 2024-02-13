@@ -24,9 +24,6 @@ private:
     //Rendering Sync
     RenderFrameLimitMode _renderState = RenderFrameLimitMode::UNLIMIT;
 
-    //When rendering textures, use CommonStates to set states
-    std::unique_ptr<DirectX::CommonStates> _comState;
-
     //Viewport defined
     D3D11_VIEWPORT _viewport{};
     FLOAT _defColor[4]{};
@@ -36,13 +33,12 @@ private:
     void CreateDevSC();
     void CreateRTV();
     void SetViewport();
-    void SetPipeline();
 
 public:
 
     ComPtr<ID3D11Device> GetDevice() const { return _dev; }
     ComPtr<ID3D11DeviceContext> GetDeviceContext() const { return _devContext; }
-
+    
     void Init();
     void SetRenderFrameLimitMode(const RenderFrameLimitMode& state);
     void RenderBegin();

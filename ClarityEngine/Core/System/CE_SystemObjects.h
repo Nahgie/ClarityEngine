@@ -16,9 +16,12 @@
 //Scene System
 #include "Core/System/Scene/CE_SceneBase.h"
 
+//Video Player
+#include "Core/System/Component/VideoPlayer/CE_VideoPlayer.h"
+
 //File System
 #include "Core/System/Component/FileSystem/XML/CE_SaveXML.h"
 #include "Core/System/Component/FileSystem/XML/CE_LoadXML.h"
 
-#include "Core/System/Component/FileSystem/BIN/CE_BinSave.h"
-#include "Core/System/Component/FileSystem/BIN/CE_BinLoad.h"
+#include "Core/System/Component/FileSystem/Binary/CE_BinSave.h"
+#include "Core/System/Component/FileSystem/Binary/CE_BinLoad.h"

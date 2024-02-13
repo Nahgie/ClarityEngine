@@ -90,7 +90,7 @@ void CE_Animator::Update()
 
 void CE_Animator::Render()
 {
-    _texture->Begin();
+    _texture->Begin(DirectX::SpriteSortMode_Deferred, _comState->NonPremultiplied());
 
     _texture->Draw
     (

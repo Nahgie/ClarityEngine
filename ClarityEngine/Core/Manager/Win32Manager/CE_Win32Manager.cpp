@@ -36,9 +36,8 @@ LRESULT CE_Win32Manager::WndProc(HWND handle, UINT message, WPARAM wParam, LPARA
 
 void CE_Win32Manager::SetupWindow()
 {
-    WNDCLASSEXW wc;
+    WNDCLASSEXW wc{};
 
-    WIN32::ZeroMemory(&wc, sizeof(WNDCLASSEXW));
     {
         wc.cbSize = sizeof(WNDCLASSEXW);
         wc.style = CS_HREDRAW | CS_VREDRAW;
@@ -106,8 +105,7 @@ void CE_Win32Manager::Init
 
     GameMNGR->Init();
 
-    MSG msg;
-    WIN32::ZeroMemory(&msg, sizeof(MSG));
+    MSG msg{};
 
     while (WIN32::GetMessageW(&msg, nullptr, 0, 0))
     {

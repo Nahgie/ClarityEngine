@@ -6,11 +6,14 @@
 #include <Windows.h>
 #include <windowsx.h>
 #include <wrl.h>
+#include <wincodec.h>
 
-//Windows MediaFoundation
+//Windows Media Foundation
+#include <mfmediaengine.h>
 #include <mfapi.h>
 #include <mfidl.h>
 #include <mfreadwrite.h>
+#include <mferror.h>
 
 //C (CPP PORTED)
 #include <cassert>
@@ -76,13 +79,15 @@
 #include "DXTK/Inc/ScreenGrab.h"
 #include "DXTK/Inc/SimpleMath.h"
 
+//DirectX libs
 #pragma comment(lib, "d3d11.lib")
 #pragma comment(lib, "d3dcompiler.lib")
 #pragma comment(lib, "dxgi.lib")
 
+//Windows Media Foundation libs
 #pragma comment(lib, "mfplat.lib")
-#pragma comment(lib, "mfreadwrite.lib")
 #pragma comment(lib, "mfuuid.lib")
+#pragma comment(lib, "mfreadwrite.lib")
 
 //This lib supports x64(AMD64) only and should be built with /MT or /MTd compiler options
 #ifdef _DEBUG

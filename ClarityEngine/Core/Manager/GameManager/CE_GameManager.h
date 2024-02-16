@@ -3,7 +3,7 @@
 
 constexpr UINT8 SECONDS(1 << 0);
 constexpr UINT8 FPS_NUM(1 << 0);
-constexpr UINT16 FPS_DEN(240);      //Target FPS
+constexpr UINT16 FPS_DEN(60);      //Target FPS
 
 class CE_GameManager final : public CE_Singleton<CE_GameManager>
 {

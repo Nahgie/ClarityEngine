@@ -36,6 +36,7 @@ public:
         const UINT32& spriteOffset,
         const UINT8& frame,
         const RenderDir& renderDir = RenderDir::HORIZONTAL,
+        const Vec4& color = { 1.f, 1.f, 1.f, 1.f },
         const Vec2& scale = { 1.f, 1.f },
         const FLOAT& rot = 0.f,
         const FLOAT& depth = 0.f

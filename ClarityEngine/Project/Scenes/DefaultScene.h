@@ -7,9 +7,6 @@ private:
 
     std::shared_ptr<VideoPlayer> _video = nullptr;
 
-    std::shared_ptr<Painter> _obj = nullptr;
-    std::shared_ptr<Painter> _obj2 = nullptr;
-
 public:
 
     DefaultScene() { Begin(); }

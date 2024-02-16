@@ -11,15 +11,13 @@ void CE_GraphicsManager::Init()
 void CE_GraphicsManager::CreateDevSC()
 {
     //Get Current Monitor Information(WinGDI)
-    DEVMODEW deviceMode;
-    WIN32::ZeroMemory(&deviceMode, sizeof(DEVMODEW));
+    DEVMODEW deviceMode{};
     {
         deviceMode.dmSize = sizeof(DEVMODEW);
         WIN32::EnumDisplaySettingsW(nullptr, ENUM_CURRENT_SETTINGS, &deviceMode);
     }
 
-    DXGI_SWAP_CHAIN_DESC desc;
-    WIN32::ZeroMemory(&desc, sizeof(DXGI_SWAP_CHAIN_DESC));
+    DXGI_SWAP_CHAIN_DESC desc{};
     {
         desc.BufferDesc.Width = Win32MNGR->GetWidth();
         desc.BufferDesc.Height = Win32MNGR->GetHeight();

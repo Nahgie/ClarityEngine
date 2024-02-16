@@ -9,11 +9,12 @@ CE_Animator::CE_Animator
     const UINT32& spriteOffset,
     const UINT8& frame,
     const RenderDir& renderDir,
+    const Vec4& color,
     const Vec2& scale,
     const FLOAT& rot,
     const FLOAT& depth
 )
-    : Super(path, pos, scale, rot, depth)
+    : Super(path, pos, color, scale, rot, depth)
 {
     _renderDirection = renderDir;
     _imgRenderSize = spriteStartSize;
@@ -97,7 +98,7 @@ void CE_Animator::Render()
         _srv.Get(),
         _imgPosition,
         &_frameData[static_cast<UINT8>(_frameLerp)],
-        DirectX::Colors::White,
+        _imgColor,
         _imgRotation,
         _imgPivot,
         _imgScale,

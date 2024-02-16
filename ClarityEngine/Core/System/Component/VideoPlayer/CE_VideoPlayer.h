@@ -4,14 +4,24 @@ class CE_VideoPlayer final : public CE_GameObject
 {
 private:
 
-    ComPtr<IMFSourceReader> _pReader;
-    ComPtr<ID3D11Texture2D> _texture;
+    std::unique_ptr<DirectX::SpriteBatch> _texture;
+    ComPtr<ID3D11ShaderResourceView> _srv;
+
+    ComPtr<IMFMediaEngine> _mediaEngine;
+    ComPtr<IMFMediaEngineEx> _mediaEngineEx;
+
+    std::wstring _path; //path of src
 
 public:
 
-    void Init();
-    void OpenMedia(const std::wstring& path);
+    CE_VideoPlayer(const std::wstring& path);
+    ~CE_VideoPlayer();
 
+    void Update() override;
+    void Render() override;
+
+    void StartUp();
+    void Shutdown();
 };
 
 using VideoPlayer = CE_VideoPlayer; //Redefined

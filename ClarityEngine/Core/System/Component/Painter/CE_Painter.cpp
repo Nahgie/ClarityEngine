@@ -5,11 +5,12 @@ CE_Painter::CE_Painter
 (
     const std::wstring& path,
     const Vec2& pos,
+    const Vec4& color,
     const Vec2& scale,
     const FLOAT& rot,
     const FLOAT& depth
 )
-    : _path(path), _imgPosition(pos), _imgScale(scale), _imgRotation(rot), _imgDepth(depth)
+    : _path(path), _imgPosition(pos), _imgScale(scale), _imgRotation(rot), _imgDepth(depth) , _imgColor(color)
 {
     _texture = std::make_unique<DirectX::SpriteBatch>(GraphicsDevContext.Get());
     assert(_texture);
@@ -53,8 +54,7 @@ void CE_Painter::Setup()
         assert(SUCCEEDED(hr));
     }
 
-    D3D11_TEXTURE2D_DESC desc;
-    WIN32::ZeroMemory(&desc, sizeof(D3D11_TEXTURE2D_DESC));
+    D3D11_TEXTURE2D_DESC desc{};
     {
         texture2D->GetDesc(&desc);
 
@@ -99,7 +99,7 @@ void CE_Painter::Render()
         _srv.Get(),
         _imgPosition,
         &_imgRenderSize,
-        DirectX::Colors::White,
+        _imgColor,
         _imgRotation,
         _imgPivot,
         _imgScale,

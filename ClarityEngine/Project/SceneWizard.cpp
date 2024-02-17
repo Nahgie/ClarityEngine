@@ -7,5 +7,5 @@ void SceneWizard::SceneRegister()    //DO NOT TOUCH IT
     {
         SceneMNGR->SaveScene(scene.first, scene.second);
     }
-    SceneMNGR->LoadScene(L"EASING");
+    SceneMNGR->LoadScene(L"Default");
 }

@@ -53,6 +53,13 @@ void CE_GraphicsManager::CreateDevSC()
         _devContext.GetAddressOf()
     );
     assert(SUCCEEDED(hr));
+
+    ComPtr<ID3D10Multithread> mt;    //MT Safety Setup (DX10)
+    _dev->QueryInterface<ID3D10Multithread>(mt.GetAddressOf());
+    mt->SetMultithreadProtected(true);
+
+    WIN32::MFCreateDXGIDeviceManager(&_dxgiResetToken, _dxgiManager.GetAddressOf());
+    _dxgiManager->ResetDevice(_dev.Get(), _dxgiResetToken);
 }
 
 void CE_GraphicsManager::CreateRTV()

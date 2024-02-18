@@ -21,12 +21,12 @@ class CE_Painter : public CE_GameObject
 {
 protected:
 
-    std::unique_ptr<DirectX::SpriteBatch> _texture;
+    std::unique_ptr<DirectX::SpriteBatch> _texture = nullptr;
 
     //When rendering textures, use CommonStates to set states
-    std::unique_ptr<DirectX::CommonStates> _comState;
+    std::unique_ptr<DirectX::CommonStates> _comState = nullptr;
 
-    ComPtr<ID3D11ShaderResourceView> _srv;
+    ComPtr<ID3D11ShaderResourceView> _srv = nullptr;
 
     DirectX::SpriteEffects _flipState = DirectX::SpriteEffects::SpriteEffects_None;
 

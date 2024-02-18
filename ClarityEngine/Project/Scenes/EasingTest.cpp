@@ -3,6 +3,9 @@
 
 void EasingTest::Begin()
 {
+    _video = std::make_shared<VideoPlayer>(L"Project/Assets/Vid/sample.mp4");
+    AddObj(_video);
+
     _obj = std::make_shared<Animator>
         (
             L"Project/Assets/Img/chara_walk.png",

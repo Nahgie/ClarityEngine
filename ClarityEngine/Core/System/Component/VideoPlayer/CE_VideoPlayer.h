@@ -2,6 +2,10 @@
 
 class CE_VideoPlayer final : public CE_GameObject
 {
+    //CAUTION!
+    //Since you've declared the Friend class, be careful of how you access it!
+    friend class CallbackInterface;
+
 private:
 
     std::unique_ptr<DirectX::SpriteBatch> _texture = nullptr;
@@ -11,7 +15,13 @@ private:
     ComPtr<IMFMediaEngineNotify> _callbacks = nullptr;
 
     std::wstring _path = nullptr; //path of src
+
     D3D11_TEXTURE2D_DESC _desc{};
+    RECT _videoSize{};
+
+private:
+
+    void CreateTexture2D();
 
 public:
 
@@ -23,36 +33,56 @@ public:
 
     void StartUp();
     void Shutdown();
-    void Play() { _mediaEngine->Play(); }
+
+    Vec2 GetVideoRes() const { return { static_cast<FLOAT>(_videoSize.right), static_cast<FLOAT>(_videoSize.bottom) }; }
 };
 
 using VideoPlayer = CE_VideoPlayer; //Redefined
 
-struct CallbackInterface : public IMFMediaEngineNotify
+class CallbackInterface : public IMFMediaEngineNotify
 {
-    std::unique_ptr<CE_VideoPlayer> _videoPlayer;
+private:
 
-    long m_cRef = 1;
+    std::unique_ptr<CE_VideoPlayer> _videoPlayer = nullptr;
+    UINT32 _cRef = 1;
+
+public:
 
     CallbackInterface(CE_VideoPlayer* player)
     {
         _videoPlayer.reset(player);
     }
 
+    ~CallbackInterface()
+    {
+
+    }
+
     virtual HRESULT STDMETHODCALLTYPE EventNotify
     (
         _In_  DWORD event,
         _In_  DWORD_PTR param1,
-        _In_  DWORD param2) override
+        _In_  DWORD param2
+    ) override
     {
 
-        switch (event) {
+        switch (event)
+        {
+        case MF_MEDIA_ENGINE_EVENT_LOADEDDATA:
+        {
+            DWORD width = 0, height = 0;
+
+            _videoPlayer->_mediaEngine->GetNativeVideoSize(&width, &height);
+            _videoPlayer->_videoSize.right = static_cast<LONG>(width);
+            _videoPlayer->_videoSize.bottom = static_cast<LONG>(height);
+            break;
+        }
         case MF_MEDIA_ENGINE_EVENT_CANPLAY:
-            std::cout << "CAN PLAY" << std::endl;
-            _videoPlayer->Play();
+            _videoPlayer->_mediaEngine->Play();
             break;
 
-        default:
+        case MF_MEDIA_ENGINE_EVENT_ENDED:
+            _videoPlayer->_srv.Reset();
             break;
         }
         return S_OK;
@@ -77,12 +107,12 @@ struct CallbackInterface : public IMFMediaEngineNotify
 
     STDMETHODIMP_(ULONG) AddRef() override
     {
-        return InterlockedIncrement(&m_cRef);
+        return InterlockedIncrement(&_cRef);
     }
 
     STDMETHODIMP_(ULONG) Release() override
     {
-        LONG cRef = InterlockedDecrement(&m_cRef);
+        LONG cRef = InterlockedDecrement(&_cRef);
         if (cRef == 0)
         {
             delete this;

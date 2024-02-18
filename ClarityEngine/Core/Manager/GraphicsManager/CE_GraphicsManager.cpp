@@ -54,7 +54,7 @@ void CE_GraphicsManager::CreateDevSC()
     );
     assert(SUCCEEDED(hr));
 
-    ComPtr<ID3D10Multithread> mt;    //MT Safety Setup (DX10)
+    ComPtr<ID3D10Multithread> mt = nullptr;    //MT Safety Setup (DX10)
     _dev->QueryInterface<ID3D10Multithread>(mt.GetAddressOf());
     mt->SetMultithreadProtected(true);
 
@@ -64,7 +64,7 @@ void CE_GraphicsManager::CreateDevSC()
 
 void CE_GraphicsManager::CreateRTV()
 {
-    ComPtr<ID3D11Texture2D> backBuff;
+    ComPtr<ID3D11Texture2D> backBuff = nullptr;
 
     HRESULT hr = _swChain->GetBuffer
     (

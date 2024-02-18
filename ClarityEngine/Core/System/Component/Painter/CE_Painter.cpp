@@ -43,12 +43,12 @@ void CE_Painter::Load()
 
 void CE_Painter::Setup()
 {
-    ComPtr<ID3D11Resource> res;
+    ComPtr<ID3D11Resource> res = nullptr;
     {
         _srv->GetResource(&res);
     }
 
-    ComPtr<ID3D11Texture2D> texture2D;
+    ComPtr<ID3D11Texture2D> texture2D = nullptr;
     {
         HRESULT hr = res->QueryInterface(texture2D.GetAddressOf());
         assert(SUCCEEDED(hr));

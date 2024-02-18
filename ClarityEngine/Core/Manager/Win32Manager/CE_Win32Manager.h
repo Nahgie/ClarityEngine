@@ -28,7 +28,7 @@ public:
     void Init
     (
         HINSTANCE hInstance = nullptr,
-        LPCWSTR title = L"SonagiEngine (Dev By Linette)",//L"Welcome to the ClarityEngine! (Dev By Nahgie)",
+        LPCWSTR title = L"Welcome to the ClarityEngine! (Dev By Nahgie)",
         const UINT32& width = 1280,
         const UINT32& height = 720
     );

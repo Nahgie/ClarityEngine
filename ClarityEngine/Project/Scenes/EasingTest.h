@@ -4,6 +4,7 @@ class EasingTest final : public CE_SceneBase
 {
 private:
 
+    std::shared_ptr<VideoPlayer> _video = nullptr;
     std::shared_ptr<Animator> _obj = nullptr;
 
 public:

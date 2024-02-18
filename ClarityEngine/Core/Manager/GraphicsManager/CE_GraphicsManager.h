@@ -18,11 +18,11 @@ class CE_GraphicsManager final : public CE_Singleton<CE_GraphicsManager>
 {
 private:
 
-    ComPtr<ID3D11Device> _dev;
-    ComPtr<ID3D11DeviceContext> _devContext;
-    ComPtr<IDXGISwapChain> _swChain;
-    ComPtr<ID3D11RenderTargetView> _rtv;
-    ComPtr<IMFDXGIDeviceManager> _dxgiManager;
+    ComPtr<ID3D11Device> _dev = nullptr;
+    ComPtr<ID3D11DeviceContext> _devContext = nullptr;
+    ComPtr<IDXGISwapChain> _swChain = nullptr;
+    ComPtr<ID3D11RenderTargetView> _rtv = nullptr;
+    ComPtr<IMFDXGIDeviceManager> _dxgiManager = nullptr;
 
     //Rendering Sync
     RenderFrameLimitMode _renderState = RenderFrameLimitMode::UNLIMIT;
@@ -40,11 +40,11 @@ private:
 
 public:
 
-    ComPtr<ID3D11Device> GetDevice() const { return _dev; }
-    ComPtr<ID3D11DeviceContext> GetDeviceContext() const { return _devContext; }
-    ComPtr<IDXGISwapChain> GetSWChain() const { return _swChain; }
-    ComPtr<IMFDXGIDeviceManager> GetDXGI() const { return _dxgiManager; }
-    
+    const ComPtr<ID3D11Device>& GetDevice() const { return _dev; }
+    const ComPtr<ID3D11DeviceContext>& GetDeviceContext() const { return _devContext; }
+    const ComPtr<IDXGISwapChain>& GetSWChain() const { return _swChain; }
+    const ComPtr<IMFDXGIDeviceManager>& GetDXGI() const { return _dxgiManager; }
+
     void Init();
     void SetRenderFrameLimitMode(const RenderFrameLimitMode& state);
     void RenderBegin();

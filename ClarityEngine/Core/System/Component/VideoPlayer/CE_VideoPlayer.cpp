@@ -14,21 +14,21 @@ CE_VideoPlayer::~CE_VideoPlayer()
 
 void CE_VideoPlayer::StartUp()
 {
-    HRESULT hr = MFStartup(MF_VERSION);
+    HRESULT hr = WIN32::MFStartup(MF_VERSION);
     assert(SUCCEEDED(hr));
 
     ComPtr<IMFMediaEngineClassFactory> factory = nullptr;
 
-    hr = CoCreateInstance(CLSID_MFMediaEngineClassFactory, nullptr, CLSCTX_INPROC_SERVER, IID_PPV_ARGS(factory.GetAddressOf()));
+    hr = WIN32::CoCreateInstance(CLSID_MFMediaEngineClassFactory, nullptr, CLSCTX_ALL, IID_PPV_ARGS(factory.GetAddressOf()));
     assert(SUCCEEDED(hr));
 
-    DWORD flags = 0;
+    DWORD flags = MF_MEDIA_ENGINE_REAL_TIME_MODE;
 
     ComPtr<IMFAttributes> attributes = nullptr;
-    hr = MFCreateAttributes(&attributes, 1);
+    hr = WIN32::MFCreateAttributes(&attributes, 1);
     assert(SUCCEEDED(hr));
 
-    _callbacks = new CallbackInterface(this);
+    _callbacks = ComPtr<CallbackInterface>(new CallbackInterface(this));
 
     hr = attributes->SetUnknown(MF_MEDIA_ENGINE_CALLBACK, _callbacks.Get());
     assert(SUCCEEDED(hr));
@@ -45,23 +45,13 @@ void CE_VideoPlayer::StartUp()
     hr = _mediaEngine->SetSource((BSTR)_path.c_str());
     assert(SUCCEEDED(hr));
 
-    hr = _mediaEngine->SetPreload(MF_MEDIA_ENGINE_PRELOAD_AUTOMATIC);
-    _mediaEngine->Load();
+    hr = _mediaEngine->SetPreload(MF_MEDIA_ENGINE_PRELOAD_METADATA);
     assert(SUCCEEDED(hr));
 
-    {
-        _desc.Width = Win32MNGR->GetWidth();
-        _desc.Height = Win32MNGR->GetHeight();
-        _desc.MipLevels = 1;
-        _desc.ArraySize = 1;
-        _desc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
-        _desc.SampleDesc.Count = 1;
-        _desc.SampleDesc.Quality = 0;
-        _desc.Usage = D3D11_USAGE_DEFAULT;
-        _desc.BindFlags = D3D11_BIND_RENDER_TARGET | D3D11_BIND_SHADER_RESOURCE;
-        _desc.CPUAccessFlags = false;
-        _desc.MiscFlags = false;
-    }
+    hr = _mediaEngine->Load();
+    assert(SUCCEEDED(hr));
+
+    CE_VideoPlayer::CreateTexture2D();
 }
 
 void CE_VideoPlayer::Shutdown()
@@ -71,10 +61,24 @@ void CE_VideoPlayer::Shutdown()
         _mediaEngine->Shutdown();
     }
 
-    HRESULT hr = MFShutdown();
+    HRESULT hr = WIN32::MFShutdown();
     assert(SUCCEEDED(hr));
 }
 
+void CE_VideoPlayer::CreateTexture2D()
+{
+    _desc.Width = Win32MNGR->GetWidth();
+    _desc.Height = Win32MNGR->GetHeight();
+    _desc.MipLevels = 1;
+    _desc.ArraySize = 1;
+    _desc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
+    _desc.SampleDesc.Count = 1;
+    _desc.SampleDesc.Quality = 0;
+    _desc.Usage = D3D11_USAGE_DEFAULT;
+    _desc.BindFlags = D3D11_BIND_RENDER_TARGET | D3D11_BIND_SHADER_RESOURCE;
+    _desc.CPUAccessFlags = false;
+    _desc.MiscFlags = false;
+}
 
 void CE_VideoPlayer::Update()
 {
@@ -82,16 +86,15 @@ void CE_VideoPlayer::Update()
 
     if (_mediaEngine->OnVideoStreamTick(&pts) == S_OK)
     {
-        const MFARGB border = { 0, 0, 0, 255 };
-        RECT dimensions = { 0, 0, 1920, 1080 };
-
         ComPtr<ID3D11Texture2D> videoTexture = nullptr;
 
-        GraphicsDev->CreateTexture2D(&_desc, nullptr, videoTexture.GetAddressOf());
+        HRESULT hr = GraphicsDev->CreateTexture2D(&_desc, nullptr, videoTexture.GetAddressOf());
+        assert(SUCCEEDED(hr));
 
-        _mediaEngine->TransferVideoFrame(videoTexture.Get(), nullptr, &dimensions, &border);
+        hr = _mediaEngine->TransferVideoFrame(videoTexture.Get(), nullptr, &_videoSize, nullptr);
+        assert(SUCCEEDED(hr));
 
-        HRESULT hr = GraphicsDev->CreateShaderResourceView(videoTexture.Get(), nullptr, &_srv);
+        hr = GraphicsDev->CreateShaderResourceView(videoTexture.Get(), nullptr, &_srv);
         assert(SUCCEEDED(hr));
     }
 }

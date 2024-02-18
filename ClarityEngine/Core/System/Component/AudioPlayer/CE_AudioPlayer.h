@@ -5,7 +5,7 @@ class CE_AudioPlayer final //It's SimplePlayer
 private:
 
     DirectX::AudioEngine _audioEngine;
-    std::unique_ptr<DirectX::SoundEffect> _soundEffect;
+    std::unique_ptr<DirectX::SoundEffect> _soundEffect = nullptr;
     std::vector<std::unique_ptr<DirectX::SoundEffectInstance>> _soundInstances;
 
 public:

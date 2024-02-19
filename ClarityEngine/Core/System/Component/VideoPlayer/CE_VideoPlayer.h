@@ -18,6 +18,7 @@ private:
 
     D3D11_TEXTURE2D_DESC _desc{};
     RECT _videoSize{};
+    FLOAT _videoVolume = 1;
 
 private:
 
@@ -34,7 +35,12 @@ public:
     void StartUp();
     void Shutdown();
 
-    Vec2 GetVideoRes() const { return { static_cast<FLOAT>(_videoSize.right), static_cast<FLOAT>(_videoSize.bottom) }; }
+    void SetVolume(const FLOAT& volume) { _videoVolume = volume; }
+    void Play() { _mediaEngine->Play(); }
+    void Stop() { _mediaEngine->Pause(); }
+
+    Vec2 GetVideoRes() const { return Vec2(static_cast<FLOAT>(_videoSize.right), static_cast<FLOAT>(_videoSize.bottom)); }
+    void SetVideoRes(const Vec2& res) { _videoSize.right = static_cast<LONG>(res.x); _videoSize.bottom = static_cast<LONG>(res.y); }
 };
 
 using VideoPlayer = CE_VideoPlayer; //Redefined
@@ -75,10 +81,16 @@ public:
             _videoPlayer->_mediaEngine->GetNativeVideoSize(&width, &height);
             _videoPlayer->_videoSize.right = static_cast<LONG>(width);
             _videoPlayer->_videoSize.bottom = static_cast<LONG>(height);
+
+            //SetVolume
+            _videoPlayer->_mediaEngine->SetVolume(_videoPlayer->_videoVolume);
             break;
         }
         case MF_MEDIA_ENGINE_EVENT_CANPLAY:
             _videoPlayer->_mediaEngine->Play();
+            break;
+
+        case MF_MEDIA_ENGINE_EVENT_PLAYING:
             break;
 
         case MF_MEDIA_ENGINE_EVENT_ENDED:

@@ -8,9 +8,12 @@ private:
     std::unique_ptr<DirectX::SoundEffect> _soundEffect = nullptr;
     std::vector<std::unique_ptr<DirectX::SoundEffectInstance>> _soundInstances;
 
+    UINT32 _capacity = 0;
+    UINT32 _currentIndex = 0;
+
 public:
 
-    CE_AudioPlayer(const std::wstring& path);
+    CE_AudioPlayer(const std::wstring& path, const UINT32& buffSize = 1024);
     ~CE_AudioPlayer();
 
     void Play(const bool& isLoop = false , const bool& shortLength = false);

@@ -36,7 +36,7 @@ protected:
     Vec2 _imgPivot{};       //Specify the center axis of the image (AUTO CALCULATION)
     Vec2 _imgScale{};       //Scale(1.f) == 100%
     Vec2 _imgPosition{};    //Transform the position for rendering on the viewport
-    Vec4 _imgColor{};          //adjust the color and alpha value of the image
+    Vec4 _imgColor{};       //adjust the color and alpha value of the image
     FLOAT _imgRotation = 0; //Please input the angle in degrees, not radians
     FLOAT _imgDepth = 0;    //Similar to the Z-Order of UE4 UMG (NOT NECESSARY)
 
@@ -52,7 +52,7 @@ public:
         const std::wstring& path,
         const Vec2& pos,
         const Vec4& color = { 1.f, 1.f, 1.f, 1.f },
-        const Vec2& scale = {1.f, 1.f},
+        const Vec2& scale = { 1.f, 1.f },
         const FLOAT& rot = 0,
         const FLOAT& depth = 0
     );
@@ -87,6 +87,9 @@ public:
 
     //ImgFlip
     void SetFlip(const Dir& dir = Dir::DEFAULT);
+
+    //SetImg
+    void SetImage(const std::wstring& path) { _path = path; CE_Painter::Load(); CE_Painter::Setup(); }
 
     //Rendering
     void Render() override;

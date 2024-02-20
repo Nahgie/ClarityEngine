@@ -25,3 +25,7 @@
 
 #include "Core/System/Component/FileSystem/Binary/CE_BinSave.h"
 #include "Core/System/Component/FileSystem/Binary/CE_BinLoad.h"
+
+//Timer System
+#include "Core/System/Component/Timer/CE_Timer.h"
+#include "Core/System/Component/Timer/CE_Delay.h"

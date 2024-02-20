@@ -166,6 +166,7 @@
     <ClInclude Include="Core\System\Component\FileSystem\XML\CE_SaveXML.h" />
     <ClInclude Include="Core\System\Component\Painter\CE_Painter.h" />
     <ClInclude Include="Core\System\Component\SeedGenerator\CE_SeedGenerator.h" />
+    <ClInclude Include="Core\System\Component\Timer\CE_Delay.h" />
     <ClInclude Include="Core\System\Component\Timer\CE_Timer.h" />
     <ClInclude Include="Core\System\Component\VideoPlayer\CE_VideoPlayer.h" />
     <ClInclude Include="Core\System\GameObject\CE_GameObject.h" />
@@ -194,6 +195,7 @@
     <ClCompile Include="Core\System\Component\FileSystem\XML\CE_SaveXML.cpp" />
     <ClCompile Include="Core\System\Component\Painter\CE_Painter.cpp" />
     <ClCompile Include="Core\System\Component\SeedGenerator\CE_SeedGenerator.cpp" />
+    <ClCompile Include="Core\System\Component\Timer\CE_Delay.cpp" />
     <ClCompile Include="Core\System\Component\Timer\CE_Timer.cpp" />
     <ClCompile Include="Core\System\Component\VideoPlayer\CE_VideoPlayer.cpp" />
     <ClCompile Include="Core\System\GameObject\CE_GameObject.cpp" />

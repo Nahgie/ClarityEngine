@@ -3,6 +3,9 @@
 
 void EasingTest::Begin()
 {
+    std::unique_ptr<Timer> timer = std::make_unique<Timer>();
+
+    timer->Start();
     _video = std::make_shared<VideoPlayer>(L"Project/Assets/Vid/sample.mp4");
     AddObj(_video);
 
@@ -20,6 +23,9 @@ void EasingTest::Begin()
     _obj->SetColor(Vec4(1.f, 1.f, 1.f, 0.5f));
 
     AddObj(_obj);
+    timer->Stop();
+
+    std::cout << "[MS]" << timer->ElapsedTime() << "\n[SEC]" << timer->HighElapsedTime() << std::endl;
 }
 
 void EasingTest::Destroy()

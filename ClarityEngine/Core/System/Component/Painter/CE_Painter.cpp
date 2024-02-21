@@ -68,7 +68,7 @@ void CE_Painter::Setup()
     }
 }
 
-void CE_Painter::SetFlip(const Dir& dir)
+void CE_Painter::SetFlip(const Dir& dir) noexcept
 {
     switch (dir)
     {

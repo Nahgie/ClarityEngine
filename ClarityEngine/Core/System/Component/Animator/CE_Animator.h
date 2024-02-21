@@ -44,26 +44,26 @@ public:
     ~CE_Animator();
 
     //Size of One Frame to Draw Sprite Animation
-    const UINT32& GetSpriteOffset() const { return _offset; }
-    void SetSpriteOffset(const UINT32& offset) { _offset = offset; };
+    const UINT32& GetSpriteOffset() const noexcept { return _offset; }
+    void SetSpriteOffset(const UINT32& offset) noexcept { _offset = offset; };
 
     //Number of Frames in the Animation to be Played
-    const UINT32& GetFrame() const { return _animFrame; }
-    void SetFrame(const UINT32& frame) { _animFrame = frame; }
+    const UINT32& GetFrame() const noexcept { return _animFrame; }
+    void SetFrame(const UINT32& frame) noexcept { _animFrame = frame; }
 
     //Animation Playback Speed Independent of the Game Loop
-    const DOUBLE& GetAnimFrameRate() const { return _stdFrameRate; }
-    void SetAnimFrameRate(const DOUBLE& frameRate) { _stdFrameRate = frameRate; }
+    const DOUBLE& GetAnimFrameRate() const noexcept{ return _stdFrameRate; }
+    void SetAnimFrameRate(const DOUBLE& frameRate) noexcept { _stdFrameRate = frameRate; }
 
     //Adjusts the direction of drawing the animation sprite
-    const RenderDir& GetRenderDirection() const { return _renderDirection; }
+    const RenderDir& GetRenderDirection() const noexcept { return _renderDirection; }
     void SetRenderDirection(const RenderDir& renderDir);
 
     //Lerp Size
-    const DOUBLE& GetFrameLerp() const { return _frameLerp; }
+    const DOUBLE& GetFrameLerp() const noexcept { return _frameLerp; }
 
     //Reverses the Sprite animation
-    void SetAnimReverse() { std::reverse(_frameData.begin(), _frameData.end()); }
+    void SetAnimReverse() noexcept { std::reverse(_frameData.begin(), _frameData.end()); }
 
     //Animation Frame Lerp
     void Update() override;

@@ -88,7 +88,7 @@ void CE_GraphicsManager::SetViewport()
     _viewport.MaxDepth = 1.f;
 }
 
-void CE_GraphicsManager::SetRenderFrameLimitMode(const RenderFrameLimitMode& state)
+void CE_GraphicsManager::SetRenderFrameLimitMode(const RenderFrameLimitMode& state) noexcept
 {
     switch (state)
     {

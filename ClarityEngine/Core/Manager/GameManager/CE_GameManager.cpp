@@ -7,24 +7,15 @@ void CE_GameManager::Init()
     SceneMNGR->Init();
 
     //Run Threads
-    _inputUpdateThread = std::thread(&CE_GameManager::InputProcess, this);
-    _ASyncUpdateThread = std::thread(&CE_GameManager::ASyncProcess, this);
-    _gameUpdateThread = std::thread(&CE_GameManager::GameProcess, this);
-    _taskThread = std::thread(&CE_GameManager::TaskProcess, this);
-}
-
-void CE_GameManager::InputProcess()
-{
-    while (_threadState.load())
-    {
-        InputMNGR->Update();
-    }
+    _ASyncUpdateThread = std::jthread(&CE_GameManager::ASyncProcess, this);
+    _gameUpdateThread = std::jthread(&CE_GameManager::GameProcess, this);
 }
 
 void CE_GameManager::ASyncProcess()
 {
     while (_threadState.load())
     {
+        InputMNGR->Update();
         SceneMNGR->SceneASyncUpdate();
     }
 }
@@ -47,20 +38,13 @@ void CE_GameManager::GameProcess()
     }
 }
 
-void CE_GameManager::TaskProcess()
-{
-    //while (_threadState.load())
-    {
-        //TODO [ADD THE TASK]
-    }
-}
-
 void CE_GameManager::GameQuit()     //Threads Join
 {
     _threadState.store(false);
 
-    _inputUpdateThread.join();
+    _ASyncUpdateThread.request_stop();
+    _gameUpdateThread.request_stop();
+
     _ASyncUpdateThread.join();
     _gameUpdateThread.join();
-    _taskThread.join();
 }

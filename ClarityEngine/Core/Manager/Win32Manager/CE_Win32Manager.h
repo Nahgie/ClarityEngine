@@ -21,9 +21,9 @@ private:
 
 public:
 
-    HWND GetWindowHandle() const { return _hWnd; }
-    const UINT32& GetWidth() const { return _width; }
-    const UINT32& GetHeight() const { return _height; }
+    HWND GetWindowHandle() const noexcept { return _hWnd; }
+    const UINT32& GetWidth() const noexcept { return _width; }
+    const UINT32& GetHeight() const noexcept { return _height; }
 
     void Init
     (

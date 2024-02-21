@@ -60,33 +60,33 @@ public:
     virtual ~CE_Painter();
 
     //Color
-    const Vec4& GetColor() const { return _imgColor; }
-    void SetColor(const Vec4& color) { _imgColor = color; }
+    const Vec4& GetColor() const noexcept { return _imgColor; }
+    void SetColor(const Vec4& color) noexcept { _imgColor = color; }
 
     //Scale
-    const Vec2& GetScale() const { return _imgScale; }
-    void SetScale(const FLOAT& x, const FLOAT& y) { _imgScale.x = x; _imgScale.y = y; }
+    const Vec2& GetScale() const noexcept { return _imgScale; }
+    void SetScale(const FLOAT& x, const FLOAT& y) noexcept { _imgScale.x = x; _imgScale.y = y; }
 
     //Rotation
-    const FLOAT& GetAngle() const { return _imgRotation; }
-    void SetAngle(const FLOAT& deg) { _imgRotation = deg; }
+    const FLOAT& GetAngle() const noexcept { return _imgRotation; }
+    void SetAngle(const FLOAT& deg) noexcept { _imgRotation = deg; }
 
     //Translate
-    const Vec2& GetPos() const { return _imgPosition; }
-    void SetPos(const FLOAT& x, const FLOAT& y) { _imgPosition.x = x; _imgPosition.y = y; }
-    void SetX(const FLOAT& x) { _imgPosition.x = x; }
-    void SetY(const FLOAT& y) { _imgPosition.y = y; }
+    const Vec2& GetPos() const noexcept { return _imgPosition; }
+    void SetPos(const FLOAT& x, const FLOAT& y) noexcept { _imgPosition.x = x; _imgPosition.y = y; }
+    void SetX(const FLOAT& x) noexcept { _imgPosition.x = x; }
+    void SetY(const FLOAT& y) noexcept { _imgPosition.y = y; }
 
     //Depth
-    const FLOAT& GetDepth() { return _imgDepth; }
-    void SetDepth(const FLOAT& z) { _imgDepth = z; }
+    const FLOAT& GetDepth() noexcept { return _imgDepth; }
+    void SetDepth(const FLOAT& z) noexcept { _imgDepth = z; }
 
     //Pivot
-    const Vec2& GetPivot() const { return _imgPivot; }
-    void SetPivot(const FLOAT& x, const FLOAT& y) { _imgPivot.x = x; _imgPivot.y = y; }
+    const Vec2& GetPivot() const noexcept { return _imgPivot; }
+    void SetPivot(const FLOAT& x, const FLOAT& y) noexcept { _imgPivot.x = x; _imgPivot.y = y; }
 
     //ImgFlip
-    void SetFlip(const Dir& dir = Dir::DEFAULT);
+    void SetFlip(const Dir& dir = Dir::DEFAULT) noexcept;
 
     //SetImg
     void SetImage(const std::wstring& path) { _path = path; CE_Painter::Load(); CE_Painter::Setup(); }

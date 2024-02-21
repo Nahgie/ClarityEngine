@@ -15,15 +15,11 @@ private:
 
     std::atomic_bool _threadState = true;
 
-    std::thread _inputUpdateThread;
-    std::thread _ASyncUpdateThread;
-    std::thread _gameUpdateThread;
-    std::thread _taskThread;
+    std::jthread _ASyncUpdateThread;
+    std::jthread _gameUpdateThread;
 
 private:
 
-    void InputProcess();
-    void TaskProcess();
     void ASyncProcess();
     void GameProcess();
 
@@ -32,7 +28,7 @@ private:
 
 public:
 
-    const UINT16& GetTargetFPS() const { return FPS_DEN; }
+    const UINT16& GetTargetFPS() const noexcept { return FPS_DEN; }
 
     void Init();
     void GameQuit();

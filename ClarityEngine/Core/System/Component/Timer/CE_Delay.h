@@ -6,7 +6,7 @@ class CE_Delay final
 
 private:
 
-    std::chrono::microseconds _interval;
+    std::chrono::milliseconds _interval;
     UINT32 _repeatCnt;
     Callback _callback;
     std::jthread _worker;
@@ -17,13 +17,13 @@ private:
 
 public:
 
-    CE_Delay(const std::chrono::milliseconds& interval, const UINT32& repeatCnt, const Callback& callback);
+    CE_Delay(const UINT32& interval, const UINT32& repeatCnt, const Callback& callback);
     ~CE_Delay();
 
     void Start()
     {
-        Stop();
-        _worker = std::jthread([this](std::stop_token stopToken) { StartWorker(stopToken); });
+        CE_Delay::Stop();
+        _worker = std::jthread([this](std::stop_token stopToken) { CE_Delay::StartWorker(stopToken); });
     }
 
     void Stop()

@@ -6,7 +6,6 @@
 #include <Windows.h>
 #include <windowsx.h>
 #include <wrl.h>
-#include <wincodec.h>
 
 //Windows Media Foundation
 #include <mfmediaengine.h>
@@ -16,6 +15,8 @@
 #include <mferror.h>
 
 //C (CPP PORTED)
+#include <cmath>
+#include <ctime>
 #include <cassert>
 
 //CPP

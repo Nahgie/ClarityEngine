@@ -5,26 +5,6 @@ LRESULT CE_Win32Manager::WndProc(HWND handle, UINT message, WPARAM wParam, LPARA
 {
     switch (message)
     {
-    case WM_MOUSEMOVE:
-        InputMNGR->MouseUpdate(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
-        break;
-
-    case WM_LBUTTONDOWN:
-        InputMNGR->MouseLeftUpdate(true);
-        break;
-
-    case WM_LBUTTONUP:
-        InputMNGR->MouseLeftUpdate(false);
-        break;
-
-    case WM_RBUTTONDOWN:
-        InputMNGR->MouseRightUpdate(true);
-        break;
-
-    case WM_RBUTTONUP:
-        InputMNGR->MouseRightUpdate(false);
-        break;
-
     case WM_CLOSE:
     case WM_DESTROY:
 
@@ -37,7 +17,6 @@ LRESULT CE_Win32Manager::WndProc(HWND handle, UINT message, WPARAM wParam, LPARA
 void CE_Win32Manager::SetupWindow()
 {
     WNDCLASSEXW wc{};
-
     {
         wc.cbSize = sizeof(WNDCLASSEXW);
         wc.style = CS_HREDRAW | CS_VREDRAW;
@@ -51,6 +30,13 @@ void CE_Win32Manager::SetupWindow()
     HRESULT hr = WIN32::RegisterClassExW(&wc);
     assert(SUCCEEDED(hr));
 
+    //Calculate the client Window Size
+    RECT contentSize { 0, 0, _width, _height };
+    WIN32::AdjustWindowRectEx(&contentSize, WS_OVERLAPPEDWINDOW, false, WS_EX_APPWINDOW);
+
+    INT32 clientWidth = (contentSize.right - contentSize.left);
+    INT32 clientHeight = (contentSize.bottom - contentSize.top);
+
     //Creation Window
     _hWnd = WIN32::CreateWindowExW
     (
@@ -58,10 +44,10 @@ void CE_Win32Manager::SetupWindow()
         _title,
         _title,
         WS_OVERLAPPEDWINDOW,
-        (GetSystemMetrics(SM_CXSCREEN) / 2) - (_width / 2),
-        (GetSystemMetrics(SM_CYSCREEN) / 2) - (_height / 2),
-        _width,
-        _height,
+        (GetSystemMetrics(SM_CXSCREEN) / 2) - (clientWidth / 2),
+        (GetSystemMetrics(SM_CYSCREEN) / 2) - (clientHeight / 2),
+        clientWidth,
+        clientHeight,
         nullptr,
         nullptr,
         _hInstance,
@@ -86,8 +72,8 @@ void CE_Win32Manager::ReleaseWindow()
 
 void CE_Win32Manager::Init
 (
-    HINSTANCE hInstance,
-    LPCWSTR title,
+    const HINSTANCE& hInstance,
+    const LPCWSTR& title,
     const UINT32& width,
     const UINT32& height
 )

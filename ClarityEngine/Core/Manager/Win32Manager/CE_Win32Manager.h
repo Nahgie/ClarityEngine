@@ -21,14 +21,14 @@ private:
 
 public:
 
-    HWND GetWindowHandle() const noexcept { return _hWnd; }
+    const HWND& GetWindowHandle() const noexcept { return _hWnd; }
     const UINT32& GetWidth() const noexcept { return _width; }
     const UINT32& GetHeight() const noexcept { return _height; }
 
     void Init
     (
-        HINSTANCE hInstance = nullptr,
-        LPCWSTR title = L"Welcome to the ClarityEngine! (Dev By Nahgie)",
+        const HINSTANCE& hInstance = nullptr,
+        const LPCWSTR& title = L"Welcome to the ClarityEngine! (Dev By Nahgie)",
         const UINT32& width = 1280,
         const UINT32& height = 720
     );

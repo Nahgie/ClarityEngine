@@ -66,6 +66,13 @@ void EasingTest::Update()
     {
         _obj->SetY(_obj->GetPos().y + 4);
     }
+
+    if (InputMNGR->LeftKeyPressed())
+    {
+        std::cerr << "누름" << std::endl;
+    }
+
+    //std::cout << InputMNGR->GetMouseX() << " , " << InputMNGR->GetMouseY() << std::endl;
 }
 
 void EasingTest::ASyncUpdate()

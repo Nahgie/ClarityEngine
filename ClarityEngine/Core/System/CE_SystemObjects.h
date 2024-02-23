@@ -6,9 +6,6 @@
 //Audio Component
 #include "Core/System/Component/AudioPlayer/CE_AudioPlayer.h"
 
-//Random Component
-#include "Core/System/Component/SeedGenerator/CE_SeedGenerator.h"
-
 //2D Graphics Component
 #include "Core/System/Component/Painter/CE_Painter.h"
 #include "Core/System/Component/Animator/CE_Animator.h"
@@ -22,10 +19,15 @@
 //File System
 #include "Core/System/Component/FileSystem/XML/CE_SaveXML.h"
 #include "Core/System/Component/FileSystem/XML/CE_LoadXML.h"
-
 #include "Core/System/Component/FileSystem/Binary/CE_BinSave.h"
 #include "Core/System/Component/FileSystem/Binary/CE_BinLoad.h"
 
 //Timer System
 #include "Core/System/Component/Timer/CE_Timer.h"
-#include "Core/System/Component/Timer/CE_Delay.h"
+
+//Utility System
+#include "Core/System/Utility/FlowControl/Delay/CE_Delay.h"
+#include "Core/System/Utility/FlowControl/DoOnce/CE_DoOnce.h"
+#include "Core/System/Utility/FlowControl/Sequence/CE_Sequence.h"
+#include "Core/System/Utility/Math/CE_Math.h"
+#include "Core/System/Utility/SeedGenerator/CE_SeedGenerator.h"

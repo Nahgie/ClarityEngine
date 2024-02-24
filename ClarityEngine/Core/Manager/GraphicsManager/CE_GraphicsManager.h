@@ -41,7 +41,7 @@ private:
 public:
 
     const ComPtr<ID3D11Device>& GetDevice() const noexcept { return _dev; }
-    const ComPtr<ID3D11DeviceContext>& GetDeviceContext() const noexcept{ return _devContext; }
+    const ComPtr<ID3D11DeviceContext>& GetDeviceContext() const noexcept { return _devContext; }
     const ComPtr<IDXGISwapChain>& GetSWChain() const noexcept { return _swChain; }
     const ComPtr<IMFDXGIDeviceManager>& GetDXGI() const noexcept { return _dxgiManager; }
 

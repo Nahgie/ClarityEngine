@@ -35,23 +35,23 @@ public:
     const LONG& GetClientMouseY() const noexcept { return _clientCursorPos.y; }
 
     const bool& LeftKeyPressed() const noexcept { return _mouseStates[MOUSE_L]; }
-    const bool& LeftKeyReleased() const noexcept { return !_mouseStates[MOUSE_L]; }
+    const bool LeftKeyReleased() const noexcept { return !_mouseStates[MOUSE_L]; }
 
     const bool& RightKeyPressed() const noexcept { return _mouseStates[MOUSE_R]; }
-    const bool& RightKeyReleased() const noexcept { return !_mouseStates[MOUSE_R]; }
+    const bool RightKeyReleased() const noexcept { return !_mouseStates[MOUSE_R]; }
 
     const bool& MiddleKeyPressed() const noexcept { return _mouseStates[MOUSE_M]; }
-    const bool& MiddleKeyReleased() const noexcept { return !_mouseStates[MOUSE_M]; }
+    const bool MiddleKeyReleased() const noexcept { return !_mouseStates[MOUSE_M]; }
 
     const bool& SideUpKeyPressed() const noexcept { return _mouseStates[MOUSE_X1]; }
-    const bool& SideUpReleased() const noexcept { return !_mouseStates[MOUSE_X1]; }
+    const bool SideUpReleased() const noexcept { return !_mouseStates[MOUSE_X1]; }
 
     const bool& SideDownKeyPressed() const noexcept { return _mouseStates[MOUSE_X2]; }
-    const bool& SideDownKeyReleased() const noexcept { return !_mouseStates[MOUSE_X2]; }
+    const bool SideDownKeyReleased() const noexcept { return !_mouseStates[MOUSE_X2]; }
 
     //Keyboard
     const bool& KeyPressed(const UINT16& keyCode) const noexcept { return _keyboardStates[keyCode]; }
-    const bool& KeyReleased(const UINT16& keyCode) const noexcept { return !_keyboardStates[keyCode]; }
+    const bool KeyReleased(const UINT16& keyCode) const noexcept { return !_keyboardStates[keyCode]; }
 
     //StateUpdate
     void Update();

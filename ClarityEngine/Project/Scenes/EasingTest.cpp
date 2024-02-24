@@ -34,8 +34,26 @@ void EasingTest::Begin()
     std::cout << "[MS]" << timer.ElapsedTime() << "\n[SEC]" << timer.HighElapsedTime() << std::endl;
 
     /* Delay Test Code */
-    _delay = std::make_unique<Delay>(1000, 0, [this]() { this->Test(); });
-    _delay01 = std::make_unique<Delay>(1000, 10, Test01);
+    //_delay = std::make_unique<Delay>(1000, 0, [this]() { this->Test(); });
+    //_delay01 = std::make_unique<Delay>(1000, 10, Test01);
+
+    std::vector<std::function<void()>> vec
+    {
+        []() {for (UINT64 i = 0; i <= 9000000000; i++) {} std::cerr << "DONE" << std::endl; },
+        []() {for (UINT64 i = 0; i <= 9000000000; i++) {} std::cerr << "DONE" << std::endl; },
+        []() {for (UINT64 i = 0; i <= 9000000000; i++) {} std::cerr << "DONE" << std::endl; },
+        []() {for (UINT64 i = 0; i <= 9000000000; i++) {} std::cerr << "DONE" << std::endl; },
+        []() {for (UINT64 i = 0; i <= 9000000000; i++) {} std::cerr << "DONE" << std::endl; },
+        []() {for (UINT64 i = 0; i <= 9000000000; i++) {} std::cerr << "DONE" << std::endl; },
+        []() {for (UINT64 i = 0; i <= 9000000000; i++) {} std::cerr << "DONE" << std::endl; },
+        []() {for (UINT64 i = 0; i <= 9000000000; i++) {} std::cerr << "DONE" << std::endl; },
+        []() {for (UINT64 i = 0; i <= 9000000000; i++) {} std::cerr << "DONE" << std::endl; },
+        []() {for (UINT64 i = 0; i <= 9000000000; i++) {} std::cerr << "DONE" << std::endl; },
+    };
+
+    seq.AddJob(vec);
+    seq.RunJobs();
+    //seq.WaitEndJobs();
 }
 
 void EasingTest::Destroy()
@@ -45,6 +63,8 @@ void EasingTest::Destroy()
 
 void EasingTest::Update()
 {
+    static DoOnce leftKeyOnce;
+
     if (InputMNGR->KeyPressed('D'))
     {
         _obj->SetFlip(Dir::DEFAULT);
@@ -67,12 +87,17 @@ void EasingTest::Update()
         _obj->SetY(_obj->GetPos().y + 4);
     }
 
-    if (InputMNGR->LeftKeyPressed())
+    if (InputMNGR->LeftKeyPressed() && NOT_PASSED(leftKeyOnce))
     {
-        std::cerr << "누름" << std::endl;
+        std::cerr << "Down" << std::endl;
+        leftKeyOnce.Block();
     }
 
-    //std::cout << InputMNGR->GetMouseX() << " , " << InputMNGR->GetMouseY() << std::endl;
+    if (InputMNGR->LeftKeyReleased() && PASSED(leftKeyOnce))
+    {
+        std::cerr << "Up" << std::endl;
+        leftKeyOnce.Reset();
+    }
 }
 
 void EasingTest::ASyncUpdate()

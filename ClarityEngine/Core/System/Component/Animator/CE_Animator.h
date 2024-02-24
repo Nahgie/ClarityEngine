@@ -52,7 +52,7 @@ public:
     void SetFrame(const UINT32& frame) noexcept { _animFrame = frame; }
 
     //Animation Playback Speed Independent of the Game Loop
-    const DOUBLE& GetAnimFrameRate() const noexcept{ return _stdFrameRate; }
+    const DOUBLE& GetAnimFrameRate() const noexcept { return _stdFrameRate; }
     void SetAnimFrameRate(const DOUBLE& frameRate) noexcept { _stdFrameRate = frameRate; }
 
     //Adjusts the direction of drawing the animation sprite

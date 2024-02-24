@@ -99,9 +99,6 @@
     <ClInclude Include="Core\System\Utility\FlowControl\Delay\CE_Delay.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Core\System\Utility\Math\CE_Math.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="Core\System\Utility\FlowControl\DoOnce\CE_DoOnce.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -180,9 +177,6 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Core\System\Utility\FlowControl\Delay\CE_Delay.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Core\System\Utility\Math\CE_Math.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Core\System\Utility\FlowControl\DoOnce\CE_DoOnce.cpp">

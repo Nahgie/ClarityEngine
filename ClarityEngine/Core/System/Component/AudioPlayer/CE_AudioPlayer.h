@@ -16,7 +16,7 @@ public:
     CE_AudioPlayer(const std::wstring& path, const UINT32& buffSize = 1024);
     ~CE_AudioPlayer();
 
-    void Play(const bool& isLoop = false , const bool& shortLength = false);
+    void Play(const bool& isLoop = false, const bool& shortLength = false);
     void SetVolume(const FLOAT& volume);
     void SetPitch(const FLOAT& pitch);
 

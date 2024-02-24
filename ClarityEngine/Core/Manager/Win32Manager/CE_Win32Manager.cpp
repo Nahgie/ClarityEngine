@@ -31,7 +31,7 @@ void CE_Win32Manager::SetupWindow()
     assert(SUCCEEDED(hr));
 
     //Calculate the client Window Size
-    RECT contentSize { 0, 0, _width, _height };
+    RECT contentSize { 0, 0, static_cast<LONG>(_width), static_cast<LONG>(_height) };
     WIN32::AdjustWindowRectEx(&contentSize, WS_OVERLAPPEDWINDOW, false, WS_EX_APPWINDOW);
 
     INT32 clientWidth = (contentSize.right - contentSize.left);

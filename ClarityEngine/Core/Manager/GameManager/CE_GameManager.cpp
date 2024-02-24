@@ -45,6 +45,9 @@ void CE_GameManager::GameQuit()     //Threads Join
     _ASyncUpdateThread.request_stop();
     _gameUpdateThread.request_stop();
 
-    _ASyncUpdateThread.join();
-    _gameUpdateThread.join();
+    if (_ASyncUpdateThread.joinable() && _gameUpdateThread.joinable())
+    {
+        _ASyncUpdateThread.join();
+        _gameUpdateThread.join();
+    }
 }

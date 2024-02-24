@@ -4,12 +4,12 @@
 CE_VideoPlayer::CE_VideoPlayer(const std::wstring& path)
     : _path(path), _texture(std::make_unique<DirectX::SpriteBatch>(GraphicsDevContext.Get()))
 {
-    StartUp();
+    CE_VideoPlayer::StartUp();
 }
 
 CE_VideoPlayer::~CE_VideoPlayer()
 {
-    Shutdown();
+    CE_VideoPlayer::Shutdown();
 }
 
 void CE_VideoPlayer::StartUp()

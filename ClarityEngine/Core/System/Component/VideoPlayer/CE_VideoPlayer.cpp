@@ -2,7 +2,8 @@
 #include "CE_VideoPlayer.h"
 
 CE_VideoPlayer::CE_VideoPlayer(const std::wstring& path)
-    : _path(path), _texture(std::make_unique<DirectX::SpriteBatch>(GraphicsDevContext.Get()))
+    : _path(path)
+    , _texture(std::make_unique<DirectX::SpriteBatch>(GraphicsDevContext.Get()))
 {
     CE_VideoPlayer::StartUp();
 }

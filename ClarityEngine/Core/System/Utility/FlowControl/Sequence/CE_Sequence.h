@@ -1,5 +1,6 @@
 ﻿#pragma once
 
+//Handle parallel tasks through multithreading. Be cautious of data races when using
 class CE_Sequence final
 {
     using Job = std::function<void()>;
@@ -12,7 +13,7 @@ private:
 public:
 
     CE_Sequence();
-    CE_Sequence(const std::vector<Job>& jobs);
+    CE_Sequence(std::vector<Job>& jobs);
     ~CE_Sequence();
 
     void AddJob(const Job& job) noexcept { _jobs.push_back(job); }

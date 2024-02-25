@@ -4,6 +4,7 @@
 #define NOT_PASSED(OBJ) !OBJ.IsBlock()
 #define PASSED(OBJ) OBJ.IsBlock()
 
+//You can ensure that the task only executes once
 class CE_DoOnce final
 {
 private:

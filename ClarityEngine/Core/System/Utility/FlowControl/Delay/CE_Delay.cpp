@@ -2,7 +2,9 @@
 #include "CE_Delay.h"
 
 CE_Delay::CE_Delay(const UINT32& interval, const UINT32& repeatCnt, const Callback& callback)
-    : _interval(std::chrono::milliseconds(interval)), _repeatCnt(repeatCnt), _callback(callback)
+    : _interval(std::chrono::milliseconds(interval))
+    , _repeatCnt(repeatCnt)
+    , _callback(callback)
 {
     CE_Delay::Start();
 }

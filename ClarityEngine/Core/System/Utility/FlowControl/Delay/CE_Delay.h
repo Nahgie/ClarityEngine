@@ -1,5 +1,6 @@
 ﻿#pragma once
 
+//Perform the task after a delay based on the input time (in milliseconds)
 class CE_Delay final
 {
     using Callback = std::function<void()>;

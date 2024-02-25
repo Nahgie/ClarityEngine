@@ -10,7 +10,12 @@ CE_Painter::CE_Painter
     const FLOAT& rot,
     const FLOAT& depth
 )
-    : _path(path), _imgPosition(pos), _imgScale(scale), _imgRotation(rot), _imgDepth(depth), _imgColor(color)
+    : _path(path)
+    , _imgPosition(pos)
+    , _imgScale(scale)
+    , _imgRotation(rot)
+    , _imgDepth(depth)
+    , _imgColor(color)
 {
     _texture = std::make_unique<DirectX::SpriteBatch>(GraphicsDevContext.Get());
     assert(_texture);

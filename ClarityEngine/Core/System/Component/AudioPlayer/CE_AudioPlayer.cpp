@@ -2,7 +2,8 @@
 #include "CE_AudioPlayer.h"
 
 CE_AudioPlayer::CE_AudioPlayer(const std::wstring& path, const UINT32& buffSize)
-    : _capacity(buffSize), _currentIndex(0)
+    : _capacity(buffSize)
+    , _currentIndex(0)
 {
     _soundEffect = std::make_unique<DirectX::SoundEffect>(&_audioEngine, path.c_str());
     _soundInstances.reserve(_capacity);

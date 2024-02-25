@@ -105,6 +105,12 @@
     <ClInclude Include="Core\System\Utility\FlowControl\Sequence\CE_Sequence.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Core\System\Utility\ResNormalizer\CE_ResNormalizer.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\System\Utility\FlowControl\FlipFlop\CE_FlipFlop.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -183,6 +189,12 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Core\System\Utility\FlowControl\Sequence\CE_Sequence.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\System\Utility\ResNormalizer\CE_ResNormalizer.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\System\Utility\FlowControl\FlipFlop\CE_FlipFlop.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

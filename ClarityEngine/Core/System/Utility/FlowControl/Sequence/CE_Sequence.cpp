@@ -6,10 +6,9 @@ CE_Sequence::CE_Sequence()
 
 }
 
-CE_Sequence::CE_Sequence(const std::vector<Job>& jobs)
-    : _jobs(jobs)
+CE_Sequence::CE_Sequence(std::vector<Job>& jobs)
 {
-
+    _jobs.swap(jobs);
 }
 
 CE_Sequence::~CE_Sequence()

@@ -10,7 +10,7 @@ private:
     std::unique_ptr<Delay> _delay = nullptr;
     std::unique_ptr<Delay> _delay01 = nullptr;
 
-    CE_Sequence seq;
+    Sequence seq;
 
 public:
 

@@ -39,21 +39,28 @@ void EasingTest::Begin()
 
     std::vector<std::function<void()>> vec
     {
-        []() {for (UINT64 i = 0; i <= 9000000000; i++) {} std::cerr << "DONE" << std::endl; },
-        []() {for (UINT64 i = 0; i <= 9000000000; i++) {} std::cerr << "DONE" << std::endl; },
-        []() {for (UINT64 i = 0; i <= 9000000000; i++) {} std::cerr << "DONE" << std::endl; },
-        []() {for (UINT64 i = 0; i <= 9000000000; i++) {} std::cerr << "DONE" << std::endl; },
-        []() {for (UINT64 i = 0; i <= 9000000000; i++) {} std::cerr << "DONE" << std::endl; },
-        []() {for (UINT64 i = 0; i <= 9000000000; i++) {} std::cerr << "DONE" << std::endl; },
-        []() {for (UINT64 i = 0; i <= 9000000000; i++) {} std::cerr << "DONE" << std::endl; },
-        []() {for (UINT64 i = 0; i <= 9000000000; i++) {} std::cerr << "DONE" << std::endl; },
-        []() {for (UINT64 i = 0; i <= 9000000000; i++) {} std::cerr << "DONE" << std::endl; },
-        []() {for (UINT64 i = 0; i <= 9000000000; i++) {} std::cerr << "DONE" << std::endl; },
+        []() {for (UINT64 i = 0; i <= 9000000000; i++) {} std::cerr << "DONE (1)" << std::endl; },
+        []() {for (UINT64 i = 0; i <= 9000000000; i++) {} std::cerr << "DONE (2)" << std::endl; },
+        []() {for (UINT64 i = 0; i <= 9000000000; i++) {} std::cerr << "DONE (3)" << std::endl; },
+        []() {for (UINT64 i = 0; i <= 9000000000; i++) {} std::cerr << "DONE (4)" << std::endl; },
+        []() {for (UINT64 i = 0; i <= 9000000000; i++) {} std::cerr << "DONE (5)" << std::endl; },
+        []() {for (UINT64 i = 0; i <= 9000000000; i++) {} std::cerr << "DONE (6)" << std::endl; },
+        []() {for (UINT64 i = 0; i <= 9000000000; i++) {} std::cerr << "DONE (7)" << std::endl; },
+        []() {for (UINT64 i = 0; i <= 9000000000; i++) {} std::cerr << "DONE (8)" << std::endl; },
+        []() {for (UINT64 i = 0; i <= 9000000000; i++) {} std::cerr << "DONE (9)" << std::endl; },
+        []() {for (UINT64 i = 0; i <= 9000000000; i++) {} std::cerr << "DONE (10)" << std::endl; },
     };
 
     seq.AddJob(vec);
     seq.RunJobs();
     //seq.WaitEndJobs();
+
+    ResNormalizer asd(Win32MNGR->GetWidth(), Win32MNGR->GetHeight());
+    Vec2 Temp1 = asd.ToRelative(512, 256);
+    Vec2 Temp2 = asd.ToAbsolute(Temp1.x, Temp1.y);
+
+    std::cerr << "Rel Value : " << Temp1.x << " , " << Temp1.y << std::endl;
+    std::cerr << "Abs Value : " << Temp2.x << " , " << Temp2.y << std::endl;
 }
 
 void EasingTest::Destroy()
@@ -64,6 +71,7 @@ void EasingTest::Destroy()
 void EasingTest::Update()
 {
     static DoOnce leftKeyOnce;
+    static DoOnce sideKeyOnce;
 
     if (InputMNGR->KeyPressed('D'))
     {
@@ -87,15 +95,15 @@ void EasingTest::Update()
         _obj->SetY(_obj->GetPos().y + 4);
     }
 
-    if (InputMNGR->LeftKeyPressed() && NOT_PASSED(leftKeyOnce))
+    if (InputMNGR->KeyPressed(MouseKeys::SIDE_UP) && NOT_PASSED(leftKeyOnce))
     {
-        std::cerr << "Down" << std::endl;
+        std::cerr << "DOWN" << std::endl;
         leftKeyOnce.Block();
     }
 
-    if (InputMNGR->LeftKeyReleased() && PASSED(leftKeyOnce))
+    if (InputMNGR->KeyReleased(MouseKeys::SIDE_UP) && PASSED(leftKeyOnce))
     {
-        std::cerr << "Up" << std::endl;
+        std::cerr << "UP" << std::endl;
         leftKeyOnce.Reset();
     }
 }

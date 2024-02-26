@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-class CE_AudioPlayer final //It's SimplePlayer
+class CE_AudioPlayer final
 {
 private:
 
@@ -27,4 +27,4 @@ public:
     void Clear();
 };
 
-using AudioPlayer = CE_AudioPlayer; //Redefined
+using AudioPlayer = CE_AudioPlayer; //편의성을 위해 객체의 이름을 재정의, 충돌 시 주석처리

@@ -2,13 +2,13 @@
 #include "CE_SceneManager.h"
 #include "Project/SceneWizard.h"
 
-void CE_SceneManager::Init()    //Initiates a SceneWizard to load the scene
+void CE_SceneManager::Init()    //SceneWizard를 통해 Scene을 로딩
 {
     SceneWizard sceneWz;
     sceneWz.SceneRegister();
 }
 
-void CE_SceneManager::SaveScene(const std::wstring& sceneName, CE_SceneBase* scene)
+void CE_SceneManager::SaveScene(const std::wstring& sceneName, CE_SceneBase* const scene)
 {
     bool saveState = !_sceneDatas.contains(sceneName);
 
@@ -31,14 +31,24 @@ void CE_SceneManager::SaveScene(const std::wstring& sceneName, CE_SceneBase* sce
     }
 }
 
-//If false is passed as an argument, keep the instance of the scene
+//false가 인자로 전달되면 Scene의 인스턴스를 삭제합니다.
 void CE_SceneManager::LoadScene(const std::wstring& sceneName, const bool& isKeep)
 {
     bool loadState = _sceneDatas.contains(sceneName);
 
     if (loadState)
     {
+        static bool validState = false;
+
+        if (validState)
+        {
+            _sceneIt->second->End();
+        }
+
+        validState = true;
+
         _sceneIt = _sceneDatas.find(sceneName);
+        _sceneIt->second->Begin();
     }
     else
     {
@@ -53,7 +63,7 @@ void CE_SceneManager::LoadScene(const std::wstring& sceneName, const bool& isKee
         assert(loadState);
     }
 
-    if (!isKeep)    //Scene Instance Clear
+    if (!isKeep)    //Scene 인스턴스 재할당
     {
         _sceneIt->second.reset(_sceneIt->second->SceneInstance());
     }

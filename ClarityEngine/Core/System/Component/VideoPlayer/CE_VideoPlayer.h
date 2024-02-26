@@ -2,8 +2,8 @@
 
 class CE_VideoPlayer final : public CE_GameObject
 {
-    //CAUTION!
-    //Since you've declared the Friend class, be careful of how you access it!
+    //경고!
+    //friend class를 선언했으니 접근 방법에 주의할 것
     friend class CallbackInterface;
 
 private:
@@ -14,7 +14,7 @@ private:
     ComPtr<IMFMediaEngine> _mediaEngine = nullptr;
     ComPtr<IMFMediaEngineNotify> _callbacks = nullptr;
 
-    std::wstring _path = nullptr; //path of src
+    std::wstring _path = nullptr; //미디어 소스의 경로
 
     D3D11_TEXTURE2D_DESC _desc{};
     RECT _videoSize{};
@@ -43,7 +43,7 @@ public:
     void SetVideoRes(const Vec2& res) { _videoSize.right = static_cast<LONG>(res.x); _videoSize.bottom = static_cast<LONG>(res.y); }
 };
 
-using VideoPlayer = CE_VideoPlayer; //Redefined
+using VideoPlayer = CE_VideoPlayer; //편의성을 위해 객체의 이름을 재정의, 충돌 시 주석처리
 
 class CallbackInterface : public IMFMediaEngineNotify
 {
@@ -82,7 +82,6 @@ public:
             _videoPlayer->_videoSize.right = static_cast<LONG>(width);
             _videoPlayer->_videoSize.bottom = static_cast<LONG>(height);
 
-            //SetVolume
             _videoPlayer->_mediaEngine->SetVolume(_videoPlayer->_videoVolume);
             break;
         }

@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-class CE_LoadXML final    //Simple XML Load System
+class CE_LoadXML final
 {
 private:
 
@@ -8,7 +8,7 @@ private:
     tinyxml2::XMLNode* _node = nullptr;
     tinyxml2::XMLElement* _element = nullptr;
 
-    //FilePath(nodeName)
+    //파일경로(nodeName)
     std::string _path;
 
 private:
@@ -29,4 +29,4 @@ public:
     DOUBLE GetGroupDOUBLE(const std::string& element, const std::string& key);
 };
 
-using LoadXML = CE_LoadXML; //Redefined
+using LoadXML = CE_LoadXML; //편의성을 위해 객체의 이름을 재정의, 충돌 시 주석처리

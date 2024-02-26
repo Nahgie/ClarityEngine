@@ -5,7 +5,7 @@
 #define GraphicsDXGI CE_GraphicsManager::GetInstance()->GetDXGI()
 #define GraphicsSWChain CE_GraphicsManager::GetInstance()->GetSWChain()
 
-enum class RenderFrameLimitMode : UINT8     //Definition of Rendering Sync
+enum class RenderFrameLimitMode : UINT8     //렌더링 싱크 조절법을 정의
 {
     UNLIMIT = 0,
     V_SYNC = 1,
@@ -24,10 +24,10 @@ private:
     ComPtr<ID3D11RenderTargetView> _rtv = nullptr;
     ComPtr<IMFDXGIDeviceManager> _dxgiManager = nullptr;
 
-    //Rendering Sync
+    //렌더링 싱크
     RenderFrameLimitMode _renderState = RenderFrameLimitMode::UNLIMIT;
 
-    //Viewport defined
+    //뷰포트 정의
     UINT32 _dxgiResetToken = 0;
     D3D11_VIEWPORT _viewport{};
     FLOAT _defColor[4]{};

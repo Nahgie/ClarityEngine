@@ -12,14 +12,14 @@ void CE_InputManager::Update()
         return;
     }
 
-    //Keyboard
+    //키보드
     for (UINT16 keyScan = 0; keyScan < 256; ++keyScan)
     {
         _keyboardStates[keyScan] = (WIN32::GetAsyncKeyState(keyScan) & 0x8000) != false;
     }
 
-    //Mouse
-    WIN32::GetCursorPos(&_cursorPos);   //Mouse Cursor Point Update
+    //마우스
+    WIN32::GetCursorPos(&_cursorPos);   //마우스 커서 좌표 업데이트
     _clientCursorPos = _cursorPos;
 
     WIN32::ScreenToClient(Win32MNGR->GetWindowHandle(), &_clientCursorPos);

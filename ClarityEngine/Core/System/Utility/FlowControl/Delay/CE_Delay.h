@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-//Perform the task after a delay based on the input time (in milliseconds)
+//입력받은 지연시간(밀리초)을 기반으로 작업을 수행
 class CE_Delay final
 {
     using Callback = std::function<void()>;
@@ -37,4 +37,4 @@ public:
     }
 };
 
-using Delay = CE_Delay; //Redefined
+using Delay = CE_Delay; //편의성을 위해 객체의 이름을 재정의, 충돌 시 주석처리

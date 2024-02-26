@@ -10,7 +10,7 @@ void CE_GraphicsManager::Init()
 
 void CE_GraphicsManager::CreateDevSC()
 {
-    //Get Current Monitor Information(WinGDI)
+    //WinGDI를 사용해 사용자의 모니터 정보를 불러옵니다.
     DEVMODEW deviceMode{};
     {
         deviceMode.dmSize = sizeof(DEVMODEW);
@@ -54,7 +54,7 @@ void CE_GraphicsManager::CreateDevSC()
     );
     assert(SUCCEEDED(hr));
 
-    ComPtr<ID3D10Multithread> mt = nullptr;    //MT Safety Setup (DX10)
+    ComPtr<ID3D10Multithread> mt = nullptr;    //다이렉트X 멀티 쓰레드 동기화 작업 (DX10)
     _dev->QueryInterface<ID3D10Multithread>(mt.GetAddressOf());
     mt->SetMultithreadProtected(true);
 

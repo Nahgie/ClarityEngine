@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-//Normalize the resolution to a value between '0.0' and '1.0'
+//해상도를 '0.0'~'1.0' 사잇값으로 정규화함
 class CE_ResNormalizer final
 {
 private:
@@ -23,4 +23,4 @@ public:
     Vec2 ToAbsolute(const DOUBLE& relX, const DOUBLE& relY);
 };
 
-using ResNormalizer = CE_ResNormalizer; //Redefined
+using ResNormalizer = CE_ResNormalizer; //편의성을 위해 객체의 이름을 재정의, 충돌 시 주석처리

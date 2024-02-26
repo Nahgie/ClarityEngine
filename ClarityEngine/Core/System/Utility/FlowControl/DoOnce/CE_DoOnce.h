@@ -1,10 +1,10 @@
 ﻿#pragma once
 
-//Easily Usable Macros for CE_DoOnce Object
-#define NOT_PASSED(OBJ) !OBJ.IsBlock()
-#define PASSED(OBJ) OBJ.IsBlock()
+//가독성을 위해 작성된 매크로 (상황에 따라 사용할 것)
+#define NOT_PASSED(OBJ) !OBJ.GetState()
+#define PASSED(OBJ) OBJ.GetState()
 
-//You can ensure that the task only executes once
+//CE_DoOnce객체 사용 시 작업이 한 번만 실행되도록 보장할 수 있음
 class CE_DoOnce final
 {
 private:
@@ -13,10 +13,10 @@ private:
 
 public:
 
-    const bool& IsBlock() const noexcept { return _blockingFlag; }
+    const bool& GetState() const noexcept { return _blockingFlag; }
 
     void Block() noexcept { _blockingFlag = true; }
     void Reset() noexcept { _blockingFlag = false; }
 };
 
-using DoOnce = CE_DoOnce; //Redefined
+using DoOnce = CE_DoOnce; //편의성을 위해 객체의 이름을 재정의, 충돌 시 주석처리

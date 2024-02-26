@@ -6,7 +6,7 @@ void CE_GameManager::Init()
     GraphicsMNGR->Init();
     SceneMNGR->Init();
 
-    //Run Threads
+    //주 쓰레드 실행
     _ASyncUpdateThread = std::jthread(&CE_GameManager::ASyncProcess, this);
     _gameUpdateThread = std::jthread(&CE_GameManager::GameProcess, this);
 }
@@ -38,7 +38,7 @@ void CE_GameManager::GameProcess()
     }
 }
 
-void CE_GameManager::GameQuit()     //Threads Join
+void CE_GameManager::GameQuit()     //쓰레드 중지 및 해제
 {
     _threadState.store(false);
 

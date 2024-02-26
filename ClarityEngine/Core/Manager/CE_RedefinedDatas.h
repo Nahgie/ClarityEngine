@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-namespace ClarityEngine         //Types Redefined
+namespace ClarityEngine         //타입 재정의
 {
     template <typename T>
     using ComPtr = Microsoft::WRL::ComPtr<T>;
@@ -20,4 +20,4 @@ namespace ClarityEngine         //Types Redefined
     constexpr DOUBLE CE_RAD2DEG(180.0 / CE_PI);
 }
 
-using namespace ClarityEngine; //Comment out in case of namespace crash is required
+using namespace ClarityEngine; //네임스페이스 충돌 시 주석처리

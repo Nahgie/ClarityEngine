@@ -37,9 +37,18 @@ void FileIO_BIN::Begin()
     }
 }
 
-void FileIO_BIN::Destroy()
+void FileIO_BIN::Construct()
 {
 }
+
+void FileIO_BIN::Destruct()
+{
+}
+
+void FileIO_BIN::End()
+{
+}
+
 
 void FileIO_BIN::Update()
 {

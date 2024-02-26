@@ -16,4 +16,4 @@ public:
     DOUBLE HighElapsedTime() const noexcept;
 };
 
-using Timer = CE_Timer; //Redefined
+using Timer = CE_Timer; //편의성을 위해 객체의 이름을 재정의, 충돌 시 주석처리

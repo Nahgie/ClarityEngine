@@ -3,11 +3,11 @@
 
 constexpr UINT8 SECONDS(1 << 0);
 constexpr UINT8 FPS_NUM(1 << 0);
-constexpr UINT16 FPS_DEN(120);      //Target FPS
+constexpr UINT16 FPS_DEN(120);      //렌더링 목표 프레임
 
 class CE_GameManager final : public CE_Singleton<CE_GameManager>
 {
-    //Redefined the timer of the <chrono> lib
+    //chrono의 타이머를 using 문으로 축약
     using frameRate = std::chrono::duration <UINT64, std::ratio<FPS_NUM, FPS_DEN>>;
     using setTimer = std::chrono::high_resolution_clock;
 
@@ -37,6 +37,6 @@ public:
 template<typename CLOCK, typename DURATION>
 inline void CE_GameManager::FrameRateController(std::chrono::time_point<CLOCK, DURATION> tPoint)
 {
-    std::this_thread::sleep_until(tPoint - std::chrono::microseconds(10)); //10us is Thread Cool Down
+    std::this_thread::sleep_until(tPoint - std::chrono::microseconds(10)); //10us(마이크로초) 추가 대기 [쓰레드 쿨 다운]
     while (tPoint >= CLOCK::now()) {};
 }

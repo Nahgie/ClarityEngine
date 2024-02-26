@@ -30,14 +30,14 @@ void CE_Win32Manager::SetupWindow()
     HRESULT hr = WIN32::RegisterClassExW(&wc);
     assert(SUCCEEDED(hr));
 
-    //Calculate the client Window Size
+    //윈도우 사이즈를 계산합니다.
     RECT contentSize { 0, 0, static_cast<LONG>(_width), static_cast<LONG>(_height) };
     WIN32::AdjustWindowRectEx(&contentSize, WS_OVERLAPPEDWINDOW, false, WS_EX_APPWINDOW);
 
     INT32 clientWidth = (contentSize.right - contentSize.left);
     INT32 clientHeight = (contentSize.bottom - contentSize.top);
 
-    //Creation Window
+    //윈도우 생성
     _hWnd = WIN32::CreateWindowExW
     (
         WS_EX_APPWINDOW,
@@ -54,7 +54,7 @@ void CE_Win32Manager::SetupWindow()
         nullptr
     );
 
-    if (_hWnd == nullptr) //Show msgBox if window creation fails
+    if (_hWnd == nullptr) //윈도우 생성 실패시 메시지 박스를 출력
     {
         WIN32::MessageBoxW(nullptr, L"Window Creation Failed!", L"FATAL ERROR", MB_ICONERROR);
         std::exit(-1);
@@ -83,7 +83,7 @@ void CE_Win32Manager::Init
     _width = width;
     _height = height;
 
-    //Initialize COM object in MT(Multi-Threaded) setting
+    //COM객체를 멀티 쓰레드 환경으로 초기화 합니다.
     HRESULT hr = WIN32::CoInitializeEx(nullptr, COINITBASE_MULTITHREADED | COINIT_DISABLE_OLE1DDE);
     assert(SUCCEEDED(hr));
 
@@ -105,7 +105,7 @@ void CE_Win32Manager::Init
     GameMNGR->GameQuit();
 }
 
-//Program EntryPoint
+//프로그램 진입점
 #ifdef _DEBUG
 
 int main()

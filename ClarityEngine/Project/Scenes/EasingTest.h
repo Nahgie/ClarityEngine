@@ -14,11 +14,13 @@ private:
 
 public:
 
-    EasingTest() { Begin(); }
-    ~EasingTest() { Destroy(); }
+    EasingTest() { Construct(); }
+    ~EasingTest() { Destruct(); }
 
+    void Construct() override;
+    void Destruct() override;
     void Begin() override;
-    void Destroy() override;
+    void End() override;
     void Update() override;
     void ASyncUpdate() override;
 

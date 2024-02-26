@@ -1,37 +1,37 @@
 ﻿#pragma once
 #define InputMNGR CE_InputManager::GetInstance()
 
-//Constants defining buttons for each device
+//각 입력장치의 버튼을 정의하는 상수
 constexpr UINT16 KEYBOARD_BUTTONS(256);
 constexpr UINT8 MOUSE_BUTTONS(5);
 
-enum class MouseKeys : UINT8    //Flags for Mouse Buttons
+enum class MouseKeys : UINT8    //마우스 버튼 전용 플래그
 {
     LEFT = 0,
     RIGHT = 1,
-    MIDDLE = 2,   //Wheel Button
-    SIDE_UP = 3,   //First Side Button
-    SIDE_DOWN = 4   //Second Side Button
+    MIDDLE = 2,     //마우스 휠 버튼
+    SIDE_UP = 3,    //사이드 업 버튼
+    SIDE_DOWN = 4   //사이드 다운 버튼
 };
 
 class CE_InputManager final : public CE_Singleton<CE_InputManager>
 {
 private:
 
-    //Mouse Pointer Axis
+    //마우스 커서 좌표
     POINT _cursorPos{};
     POINT _clientCursorPos{};
 
-    bool _keyboardStates[KEYBOARD_BUTTONS]{};    //Compatible with all sizes of keyboards
-    bool _mouseStates[MOUSE_BUTTONS]{};          //Compatible with standard types of mice
+    bool _keyboardStates[KEYBOARD_BUTTONS]{};
+    bool _mouseStates[MOUSE_BUTTONS]{};
 
 public:
 
-    //Keyboard
+    //키보드
     const bool& KeyPressed(const UINT16& keyCode) const noexcept { return _keyboardStates[keyCode]; }
     const bool KeyReleased(const UINT16& keyCode) const noexcept { return !_keyboardStates[keyCode]; }
 
-    //Mouse
+    //마우스
     const POINT& GetWinMousePos() const noexcept { return _cursorPos; }
     const LONG& GetWinMouseX() const noexcept { return _cursorPos.x; }
     const LONG& GetWinMouseY() const noexcept { return _cursorPos.y; }
@@ -43,6 +43,6 @@ public:
     const bool& KeyPressed(const MouseKeys& keyCode) const noexcept { return _mouseStates[static_cast<UINT8>(keyCode)]; }
     const bool KeyReleased(const MouseKeys& keyCode) const noexcept { return !_mouseStates[static_cast<UINT8>(keyCode)]; }
 
-    //StateUpdate
+    //입력 상태 업데이트
     void Update();
 };

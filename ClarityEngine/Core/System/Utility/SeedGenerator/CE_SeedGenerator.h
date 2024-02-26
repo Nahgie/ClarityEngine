@@ -19,4 +19,4 @@ public:
     DOUBLE GenDOUBLE(const DOUBLE& minVal, const DOUBLE& maxVal);
 };
 
-using RandomSeed = CE_SeedGenerator;    //Redefined
+using RandomSeed = CE_SeedGenerator;    //편의성을 위해 객체의 이름을 재정의, 충돌 시 주석처리

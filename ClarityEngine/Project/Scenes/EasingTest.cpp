@@ -63,7 +63,17 @@ void EasingTest::Begin()
     std::cerr << "Abs Value : " << Temp2.x << " , " << Temp2.y << std::endl;
 }
 
-void EasingTest::Destroy()
+void EasingTest::Construct()
+{
+
+}
+
+void EasingTest::Destruct()
+{
+
+}
+
+void EasingTest::End()
 {
 
 }

@@ -7,11 +7,13 @@ private:
 
 public:
 
-    FileIO_BIN() { Begin(); }
-    ~FileIO_BIN() { Destroy(); }
+    FileIO_BIN() { Construct(); }
+    ~FileIO_BIN() { Destruct(); }
 
+    void Construct() override;
+    void Destruct() override;
     void Begin() override;
-    void Destroy() override;
+    void End() override;
     void Update() override;
     void ASyncUpdate() override;
 

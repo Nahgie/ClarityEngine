@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-//Handle parallel tasks through multithreading. Be cautious of data races when using
+//멀티 쓰레딩을 통해 작업을 병렬로 처리함, 사용 시 데이터 레이스에 주의할 것
 class CE_Sequence final
 {
     using Job = std::function<void()>;
@@ -21,7 +21,7 @@ public:
 
     void RunJobs()
     {
-        for (auto& job : _jobs)
+        for (const auto& job : _jobs)
         {
             _threads.push_back(std::jthread(job));
         }
@@ -39,4 +39,4 @@ public:
     }
 };
 
-using Sequence = CE_Sequence; //Redefined
+using Sequence = CE_Sequence; //편의성을 위해 객체의 이름을 재정의, 충돌 시 주석처리

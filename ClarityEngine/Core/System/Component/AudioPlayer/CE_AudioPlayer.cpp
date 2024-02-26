@@ -18,11 +18,11 @@ void CE_AudioPlayer::Play(const bool& isLoop, const bool& shortLength)
 {
     if (_soundInstances.size() < _capacity)
     {
-        _soundInstances.emplace_back(_soundEffect->CreateInstance());
+        _soundInstances.push_back(_soundEffect->CreateInstance());
     }
     else
     {
-        // Overwrite the oldest sound instance
+        //생성된 순서대로 사운드 인스턴스를 덮어씀
         _soundInstances[_currentIndex] = _soundEffect->CreateInstance();
         _currentIndex = (_currentIndex + 1) % _capacity;
     }
@@ -72,7 +72,7 @@ void CE_AudioPlayer::Stop()
 
 void CE_AudioPlayer::Clear()
 {
-    //Explicitly release audio instances (preventing memory leaks)
+    //메모리 릭 방지를 위한 사운드 인스턴스 해제
     for (auto& instance : _soundInstances)
     {
         instance.reset(nullptr);

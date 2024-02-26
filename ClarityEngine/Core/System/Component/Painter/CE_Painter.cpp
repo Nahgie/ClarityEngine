@@ -63,11 +63,11 @@ void CE_Painter::Setup()
     {
         texture2D->GetDesc(&desc);
 
-        //Calculating RenderSize for Image
+        //이미지 렌더링 사이즈 계산
         _imgRenderSize.right = desc.Width;
         _imgRenderSize.bottom = desc.Height;
 
-        //Calculating the Pivot (Default is Center)
+        //이미지 중심축(피벗) 계산 (기본값은 이미지 각 좌표의 절반 값)
         _imgPivot.x = static_cast<FLOAT>(desc.Width / 2);
         _imgPivot.y = static_cast<FLOAT>(desc.Height / 2);
     }

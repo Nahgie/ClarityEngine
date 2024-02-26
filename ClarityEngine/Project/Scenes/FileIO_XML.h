@@ -7,11 +7,13 @@ private:
 
 public:
 
-    FileIO_XML() { Begin(); }
-    ~FileIO_XML() { Destroy(); }
+    FileIO_XML() { Construct(); }
+    ~FileIO_XML() { Destruct(); }
 
+    void Construct() override;
+    void Destruct() override;
     void Begin() override;
-    void Destroy() override;
+    void End() override;
     void Update() override;
     void ASyncUpdate() override;
 

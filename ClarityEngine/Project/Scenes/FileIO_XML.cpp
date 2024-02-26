@@ -30,10 +30,22 @@ void FileIO_XML::Begin()
 
     LoadXML load("MyTest");
     std::cout << "[XML LOADER] : " << load.GetGroupString("SampleGroup", "txt") << '\n' << std::endl;
+
+    SceneMNGR->LoadScene(L"EASING");
 }
 
-void FileIO_XML::Destroy()
+void FileIO_XML::Construct()
 {
+}
+
+void FileIO_XML::Destruct()
+{
+
+}
+
+void FileIO_XML::End()
+{
+    std::cout << "XML OUT" << std::endl;
 }
 
 void FileIO_XML::Update()

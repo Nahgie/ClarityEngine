@@ -11,7 +11,7 @@ private:
 public:
 
     void SaveScene(const std::wstring& sceneName, CE_SceneBase* const scene);
-    void LoadScene(const std::wstring& sceneName, const bool& isKeep = true);
+    void LoadScene(const std::wstring& sceneName);
     void DeleteScene(const std::wstring& sceneName);
 
     void Init();

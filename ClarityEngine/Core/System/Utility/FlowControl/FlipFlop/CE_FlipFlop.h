@@ -5,11 +5,11 @@ class CE_FlipFlop final
 {
 private:
 
-    bool _gateFlags = false;
+    bool _gateFlag = false;
 
 public:
 
-    const bool& GetState() noexcept { return _gateFlags = !_gateFlags; }
+    const bool& GetState() noexcept { return _gateFlag = !_gateFlag; }
 };
 
 using FlipFlop = CE_FlipFlop; //편의성을 위해 객체의 이름을 재정의, 충돌 시 주석처리

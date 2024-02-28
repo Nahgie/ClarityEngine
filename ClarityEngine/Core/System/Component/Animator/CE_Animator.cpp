@@ -26,7 +26,7 @@ CE_Animator::CE_Animator
     _imgPivot.x = static_cast<FLOAT>(spriteOffset / 2);
     _imgPivot.y = static_cast<FLOAT>(spriteOffset / 2);
 
-    CE_Animator::SetRenderDirection(_renderDirection);
+    SetRenderDirection(_renderDirection);
 }
 
 CE_Animator::~CE_Animator()
@@ -43,13 +43,13 @@ void CE_Animator::SetRenderDirection(const RenderDir& renderDir)
     case RenderDir::HORIZONTAL:
 
         _renderDirection = RenderDir::HORIZONTAL;
-        CE_Animator::HorizontalRender();
+        HorizontalRender();
         break;
 
     case RenderDir::VERTICAL:
 
         _renderDirection = RenderDir::VERTICAL;
-        CE_Animator::VerticalRender();
+        VerticalRender();
         break;
     }
 }

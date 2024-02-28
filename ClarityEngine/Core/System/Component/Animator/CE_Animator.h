@@ -8,7 +8,7 @@ enum class RenderDir : UINT8    //스프라이트의 렌더링 방향 정의
 
 class CE_Animator final : public CE_Painter
 {
-    using Super = CE_Painter;
+    using Super = CE_Painter;   //부모 클래스 재정의
 
 private:
 

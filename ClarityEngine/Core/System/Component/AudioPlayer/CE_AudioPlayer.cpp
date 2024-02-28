@@ -11,7 +11,7 @@ CE_AudioPlayer::CE_AudioPlayer(const std::wstring& path, const UINT32& buffSize)
 
 CE_AudioPlayer::~CE_AudioPlayer()
 {
-    CE_AudioPlayer::Clear();
+    Clear();
 }
 
 void CE_AudioPlayer::Play(const bool& isLoop, const bool& shortLength)

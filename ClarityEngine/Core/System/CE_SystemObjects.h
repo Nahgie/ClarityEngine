@@ -29,5 +29,6 @@
 #include "Core/System/Utility/FlowControl/Delay/CE_Delay.h"
 #include "Core/System/Utility/FlowControl/DoOnce/CE_DoOnce.h"
 #include "Core/System/Utility/FlowControl/Sequence/CE_Sequence.h"
+#include "Core/System/Utility/FlowControl/FlipFlop/CE_FlipFlop.h"
 #include "Core/System/Utility/ResNormalizer/CE_ResNormalizer.h"
 #include "Core/System/Utility/SeedGenerator/CE_SeedGenerator.h"

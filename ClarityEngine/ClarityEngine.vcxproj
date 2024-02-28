@@ -196,11 +196,9 @@
     <ClInclude Include="Core\System\Utility\FlowControl\DoOnce\CE_DoOnce.h" />
     <ClInclude Include="Core\System\Utility\FlowControl\Sequence\CE_Sequence.h" />
     <ClInclude Include="pch.h" />
-    <ClInclude Include="Project\Scenes\FileIO_BIN.h" />
-    <ClInclude Include="Project\Scenes\FileIO_XML.h" />
+    <ClInclude Include="Project\Scenes\PatternCreatorScene.h" />
     <ClInclude Include="Project\SceneWizard.h" />
     <ClInclude Include="Project\Scenes\DefaultScene.h" />
-    <ClInclude Include="Project\Scenes\EasingTest.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core\System\Component\Animator\CE_Animator.cpp" />
@@ -235,11 +233,9 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">pch.h</PrecompiledHeaderFile>
     </ClCompile>
-    <ClCompile Include="Project\Scenes\FileIO_BIN.cpp" />
-    <ClCompile Include="Project\Scenes\FileIO_XML.cpp" />
+    <ClCompile Include="Project\Scenes\PatternCreatorScene.cpp" />
     <ClCompile Include="Project\SceneWizard.cpp" />
     <ClCompile Include="Project\Scenes\DefaultScene.cpp" />
-    <ClCompile Include="Project\Scenes\EasingTest.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

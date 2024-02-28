@@ -89,7 +89,7 @@ public:
     void SetFlip(const Dir& dir = Dir::DEFAULT) noexcept;
 
     //이미지 소스 변경
-    void SetImage(const std::wstring& path) { _path = path; CE_Painter::Load(); CE_Painter::Setup(); }
+    void SetImage(const std::wstring& path) { _path = path; Load(); Setup(); }
 
     //렌더링
     void Render() override;

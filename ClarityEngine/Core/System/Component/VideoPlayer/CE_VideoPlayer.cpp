@@ -5,12 +5,12 @@ CE_VideoPlayer::CE_VideoPlayer(const std::wstring& path)
     : _path(path)
     , _texture(std::make_unique<DirectX::SpriteBatch>(GraphicsDevContext.Get()))
 {
-    CE_VideoPlayer::StartUp();
+    StartUp();
 }
 
 CE_VideoPlayer::~CE_VideoPlayer()
 {
-    CE_VideoPlayer::Shutdown();
+    Shutdown();
 }
 
 void CE_VideoPlayer::StartUp()
@@ -43,16 +43,20 @@ void CE_VideoPlayer::StartUp()
     hr = factory->CreateInstance(flags, attributes.Get(), _mediaEngine.GetAddressOf());
     assert(SUCCEEDED(hr));
 
-    hr = _mediaEngine->SetSource((BSTR)_path.c_str());
+    constexpr UINT16 MAX_SIZE(260);
+
+    WCHAR fullSrcPath[MAX_SIZE]{};
+
+    WIN32::GetFullPathNameW(_path.c_str(), MAX_SIZE, fullSrcPath, nullptr);
+
+    BSTR convertedSrcPath = WIN32::SysAllocString(fullSrcPath);
+
+    hr = _mediaEngine->SetSource(convertedSrcPath);
     assert(SUCCEEDED(hr));
 
-    hr = _mediaEngine->SetPreload(MF_MEDIA_ENGINE_PRELOAD_METADATA);
-    assert(SUCCEEDED(hr));
+    WIN32::SysFreeString(convertedSrcPath);
 
-    hr = _mediaEngine->Load();
-    assert(SUCCEEDED(hr));
-
-    CE_VideoPlayer::CreateTexture2D();
+    CreateTexture2D();
 }
 
 void CE_VideoPlayer::Shutdown()

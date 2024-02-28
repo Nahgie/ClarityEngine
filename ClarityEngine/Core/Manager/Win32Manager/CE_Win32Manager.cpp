@@ -87,7 +87,7 @@ void CE_Win32Manager::Init
     HRESULT hr = WIN32::CoInitializeEx(nullptr, COINITBASE_MULTITHREADED | COINIT_DISABLE_OLE1DDE);
     assert(SUCCEEDED(hr));
 
-    CE_Win32Manager::SetupWindow();
+    SetupWindow();
 
     GameMNGR->Init();
 
@@ -100,7 +100,7 @@ void CE_Win32Manager::Init
     }
 
     WIN32::CoUninitialize();
-    CE_Win32Manager::ReleaseWindow();
+    ReleaseWindow();
 
     GameMNGR->GameQuit();
 }

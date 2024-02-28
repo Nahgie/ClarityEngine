@@ -10,9 +10,9 @@ void CE_SceneManager::Init()    //SceneWizard를 통해 Scene을 로딩
 
 void CE_SceneManager::SaveScene(const std::wstring& sceneName, CE_SceneBase* const scene)
 {
-    bool saveState = !_sceneDatas.contains(sceneName);
+    bool saveFlag = !_sceneDatas.contains(sceneName);
 
-    if (saveState)
+    if (saveFlag)
     {
         _sceneDatas.insert({ sceneName, nullptr });
         _sceneDatas[sceneName].reset(scene);
@@ -26,29 +26,26 @@ void CE_SceneManager::SaveScene(const std::wstring& sceneName, CE_SceneBase* con
             L"CRITICAL ERROR",
             MB_ICONERROR
         );
-
-        assert(saveState);
     }
 }
 
-//false가 인자로 전달되면 Scene의 인스턴스를 삭제합니다.
-void CE_SceneManager::LoadScene(const std::wstring& sceneName, const bool& isKeep)
+void CE_SceneManager::LoadScene(const std::wstring& sceneName)
 {
-    bool loadState = _sceneDatas.contains(sceneName);
+    bool loadFlag = _sceneDatas.contains(sceneName);
 
-    if (loadState)
+    if (loadFlag)
     {
-        static bool validState = false;
+        static bool validFlag = false;
 
-        if (validState)
+        if (validFlag)              //최초 호출시 nullptr 참조 방지
         {
-            _sceneIt->second->End();
+            _sceneIt->second->Hide();
         }
 
-        validState = true;
-
         _sceneIt = _sceneDatas.find(sceneName);
-        _sceneIt->second->Begin();
+        _sceneIt->second->Show();
+
+        validFlag = true;
     }
     else
     {
@@ -59,21 +56,14 @@ void CE_SceneManager::LoadScene(const std::wstring& sceneName, const bool& isKee
             L"CRITICAL ERROR",
             MB_ICONERROR
         );
-
-        assert(loadState);
-    }
-
-    if (!isKeep)    //Scene 인스턴스 재할당
-    {
-        _sceneIt->second.reset(_sceneIt->second->SceneInstance());
     }
 }
 
 void CE_SceneManager::DeleteScene(const std::wstring& sceneName)
 {
-    bool deleteState = _sceneDatas.contains(sceneName);
+    bool deleteFlag = _sceneDatas.contains(sceneName);
 
-    if (deleteState)
+    if (deleteFlag)
     {
         _sceneDatas.erase(sceneName);
     }
@@ -86,8 +76,6 @@ void CE_SceneManager::DeleteScene(const std::wstring& sceneName)
             L"CRITICAL ERROR",
             MB_ICONERROR
         );
-
-        assert(deleteState);
     }
 }
 

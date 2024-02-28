@@ -23,8 +23,8 @@ CE_Painter::CE_Painter
     _comState = std::make_unique<DirectX::CommonStates>(GraphicsDev.Get());
     assert(_comState);
 
-    CE_Painter::Load();
-    CE_Painter::Setup();
+    Load();
+    Setup();
 }
 
 CE_Painter::~CE_Painter()

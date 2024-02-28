@@ -39,8 +39,11 @@ public:
     void Play() { _mediaEngine->Play(); }
     void Stop() { _mediaEngine->Pause(); }
 
-    Vec2 GetVideoRes() const { return Vec2(static_cast<FLOAT>(_videoSize.right), static_cast<FLOAT>(_videoSize.bottom)); }
+    Vec2 GetVideoRes() const noexcept { return Vec2(static_cast<FLOAT>(_videoSize.right), static_cast<FLOAT>(_videoSize.bottom)); }
     void SetVideoRes(const Vec2& res) { _videoSize.right = static_cast<LONG>(res.x); _videoSize.bottom = static_cast<LONG>(res.y); }
+    const DOUBLE& GetCurrentTime() const noexcept { return _mediaEngine->GetCurrentTime(); }
+    const DOUBLE& GetDuration() const noexcept { return _mediaEngine->GetDuration(); }
+    void SetCurrentTime(const DOUBLE& seekTime) { _mediaEngine->SetCurrentTime(seekTime); }
 };
 
 using VideoPlayer = CE_VideoPlayer; //편의성을 위해 객체의 이름을 재정의, 충돌 시 주석처리
@@ -93,8 +96,14 @@ public:
             break;
 
         case MF_MEDIA_ENGINE_EVENT_ENDED:
-            _videoPlayer->_srv.Reset();
             break;
+
+        case MF_MEDIA_ENGINE_EVENT_PAUSE:
+            break;
+
+        case MF_MEDIA_ENGINE_EVENT_ABORT:
+            break;
+
         }
         return S_OK;
     }

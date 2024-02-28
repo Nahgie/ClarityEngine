@@ -66,9 +66,6 @@
     <ClInclude Include="Core\System\Utility\SeedGenerator\CE_SeedGenerator.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Project\Scenes\EasingTest.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="Project\SceneWizard.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -84,13 +81,7 @@
     <ClInclude Include="Core\System\Component\FileSystem\Binary\CE_BinLoad.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Project\Scenes\FileIO_XML.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="Core\System\Component\FileSystem\Binary\CE_BinSave.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Project\Scenes\FileIO_BIN.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Core\System\Component\Timer\CE_Timer.h">
@@ -109,6 +100,9 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Core\System\Utility\FlowControl\FlipFlop\CE_FlipFlop.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Project\Scenes\PatternCreatorScene.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
@@ -152,9 +146,6 @@
     <ClCompile Include="Core\System\Utility\SeedGenerator\CE_SeedGenerator.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Project\Scenes\EasingTest.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="Project\SceneWizard.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -170,13 +161,7 @@
     <ClCompile Include="Core\System\Component\FileSystem\Binary\CE_BinLoad.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Project\Scenes\FileIO_XML.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="Core\System\Component\FileSystem\Binary\CE_BinSave.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Project\Scenes\FileIO_BIN.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Core\System\Component\Timer\CE_Timer.cpp">
@@ -195,6 +180,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Core\System\Utility\FlowControl\FlipFlop\CE_FlipFlop.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Project\Scenes\PatternCreatorScene.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

@@ -33,7 +33,7 @@ void CE_GameManager::GameProcess()
         }
         GraphicsMNGR->RenderEnd();
 
-        CE_GameManager::FrameRateController(timePoint);
+        FrameRateController(timePoint);
         timePoint += frameRate(SECONDS);
     }
 }

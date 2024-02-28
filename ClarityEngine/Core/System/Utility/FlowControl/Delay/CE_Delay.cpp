@@ -6,7 +6,7 @@ CE_Delay::CE_Delay(const UINT32& interval, const UINT32& repeatCnt, const Callba
     , _repeatCnt(repeatCnt)
     , _callback(callback)
 {
-    CE_Delay::Start();
+    Start();
 }
 
 CE_Delay::~CE_Delay()

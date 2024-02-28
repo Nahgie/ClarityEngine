@@ -23,8 +23,8 @@ public:
 
     void Start()
     {
-        CE_Delay::Stop();
-        _worker = std::jthread([this](std::stop_token stopToken) { CE_Delay::StartWorker(stopToken); });
+        Stop();
+        _worker = std::jthread([this](std::stop_token stopToken) { StartWorker(stopToken); });
     }
 
     void Stop()

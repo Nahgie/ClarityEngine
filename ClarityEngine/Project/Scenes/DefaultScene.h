@@ -10,15 +10,13 @@ private:
 
 public:
 
-    DefaultScene() { Construct(); }
-    ~DefaultScene() { Destruct(); }
+    DefaultScene() { Create(); }
+    ~DefaultScene() { Destroy(); }
 
-    void Construct() override;
-    void Begin() override;
+    void Create() override;
+    void Show() override;
     void Update() override;
     void ASyncUpdate() override;
-    void End() override;
-    void Destruct() override;
-
-    DefaultScene* SceneInstance() { return new DefaultScene; }
+    void Hide() override;
+    void Destroy() override;
 };

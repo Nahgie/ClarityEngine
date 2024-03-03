@@ -104,6 +104,8 @@ public:
         case MF_MEDIA_ENGINE_EVENT_ABORT:
             break;
 
+        default:
+            break;
         }
         return S_OK;
     }

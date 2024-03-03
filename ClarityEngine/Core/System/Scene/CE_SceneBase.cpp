@@ -1,7 +1,8 @@
 ﻿#include "pch.h"
 #include "CE_SceneBase.h"
 
-std::map<std::wstring, std::any> CE_SceneBase::_sceneRetainVariable;
+//std::map<std::wstring, std::any> CE_SceneBase::_sceneRetainVariable;  //std::any(RTTI)사용
+std::map<std::wstring, CE_SceneBase::SupportedTypes> CE_SceneBase::_sceneRetainVariable;
 
 CE_SceneBase::CE_SceneBase()
 {
@@ -11,26 +12,6 @@ CE_SceneBase::CE_SceneBase()
 CE_SceneBase::~CE_SceneBase()
 {
 
-}
-
-void CE_SceneBase::SetVariable(const std::wstring& key, const std::any& value)
-{
-    bool saveFlag = !_sceneRetainVariable.contains(key);
-
-    if (saveFlag)
-    {
-        _sceneRetainVariable.insert({key, value});
-    }
-    else
-    {
-        WIN32::MessageBoxW
-        (
-            Win32MNGR->GetWindowHandle(),
-            L"Duplicate variable",
-            L"CRITICAL ERROR",
-            MB_ICONERROR
-        );
-    }
 }
 
 void CE_SceneBase::DelVariable(const std::wstring& key)
@@ -46,7 +27,7 @@ void CE_SceneBase::DelVariable(const std::wstring& key)
         WIN32::MessageBoxW
         (
             Win32MNGR->GetWindowHandle(),
-            L"Variable is not found",
+            L"Variable not found, can not delete.",
             L"CRITICAL ERROR",
             MB_ICONERROR
         );

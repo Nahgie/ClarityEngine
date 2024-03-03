@@ -58,8 +58,11 @@ void CE_GraphicsManager::CreateDevSC()
     _dev->QueryInterface<ID3D10Multithread>(mt.GetAddressOf());
     mt->SetMultithreadProtected(true);
 
-    WIN32::MFCreateDXGIDeviceManager(&_dxgiResetToken, _dxgiManager.GetAddressOf());
-    _dxgiManager->ResetDevice(_dev.Get(), _dxgiResetToken);
+    hr = WIN32::MFCreateDXGIDeviceManager(&_dxgiResetToken, _dxgiManager.GetAddressOf());
+    assert(SUCCEEDED(hr));
+
+    hr = _dxgiManager->ResetDevice(_dev.Get(), _dxgiResetToken);
+    assert(SUCCEEDED(hr));
 }
 
 void CE_GraphicsManager::CreateRTV()
@@ -88,28 +91,31 @@ void CE_GraphicsManager::SetViewport()
     _viewport.MaxDepth = 1.f;
 }
 
-void CE_GraphicsManager::SetRenderFrameLimitMode(const RenderFrameLimitMode& state) noexcept
+void CE_GraphicsManager::SetRenderLimitMode(const eRenderLimitMode& state) noexcept
 {
     switch (state)
     {
-    case RenderFrameLimitMode::UNLIMIT:
-        _renderState = RenderFrameLimitMode::UNLIMIT;
+    case eRenderLimitMode::UNLIMIT:
+        _renderState = eRenderLimitMode::UNLIMIT;
         break;
 
-    case RenderFrameLimitMode::V_SYNC:
-        _renderState = RenderFrameLimitMode::V_SYNC;
+    case eRenderLimitMode::V_SYNC:
+        _renderState = eRenderLimitMode::V_SYNC;
         break;
 
-    case RenderFrameLimitMode::SINGLE_BUFFER:
-        _renderState = RenderFrameLimitMode::SINGLE_BUFFER;
+    case eRenderLimitMode::SINGLE_BUFFER:
+        _renderState = eRenderLimitMode::SINGLE_BUFFER;
         break;
 
-    case RenderFrameLimitMode::DOUBLE_BUFFER:
-        _renderState = RenderFrameLimitMode::DOUBLE_BUFFER;
+    case eRenderLimitMode::DOUBLE_BUFFER:
+        _renderState = eRenderLimitMode::DOUBLE_BUFFER;
         break;
 
-    case RenderFrameLimitMode::TRIPLE_BUFFER:
-        _renderState = RenderFrameLimitMode::TRIPLE_BUFFER;
+    case eRenderLimitMode::TRIPLE_BUFFER:
+        _renderState = eRenderLimitMode::TRIPLE_BUFFER;
+        break;
+
+    default:
         break;
     }
 }

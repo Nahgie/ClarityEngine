@@ -8,7 +8,10 @@ void DefaultScene::Create()      //Scene이 생성되면 호출됩니다.
 
 void DefaultScene::Show()        //Scene에 진입하면 호출됩니다.
 {
-    SetVariable(L"Dummy", std::wstring(L"asdasd"));
+    SetVariable<std::wstring>(L"Dummy", L"TestStr");
+
+    //std::wcout << PathFinder().GetFullPath(L"Project/Assets/Vid/sample.mp4") << std::endl;
+
     SceneMNGR->LoadScene(L"CREATOR");
 }
 

@@ -1,21 +1,21 @@
 ﻿#pragma once
 #define InputMNGR CE_InputManager::GetInstance()
 
-//각 입력장치의 버튼을 정의하는 상수
-constexpr UINT16 KEYBOARD_BUTTONS(256);
-constexpr UINT8 MOUSE_BUTTONS(5);
-
-enum class MouseKeys : UINT8    //마우스 버튼 전용 플래그
+enum class eMouseKeys : UINT8    //마우스 버튼 전용 플래그
 {
-    LEFT = 0,
-    RIGHT = 1,
-    MIDDLE = 2,     //마우스 휠 버튼
-    SIDE_UP = 3,    //사이드 업 버튼
-    SIDE_DOWN = 4   //사이드 다운 버튼
+    LEFT = (0x00),
+    RIGHT = (0x01),
+    MIDDLE = (0x02),     //마우스 휠 버튼
+    SIDE_UP = (0x03),    //사이드 업 버튼
+    SIDE_DOWN = (0x04)   //사이드 다운 버튼
 };
 
 class CE_InputManager final : public CE_Singleton<CE_InputManager>
 {
+    //각 입력장치의 버튼을 정의하는 상수
+    constexpr static UINT16 KEYBOARD_BUTTONS{ 256 };
+    constexpr static UINT8 MOUSE_BUTTONS{ 0x05 };
+
 private:
 
     //마우스 커서 좌표
@@ -40,8 +40,8 @@ public:
     const LONG& GetClientMouseX() const noexcept { return _clientCursorPos.x; }
     const LONG& GetClientMouseY() const noexcept { return _clientCursorPos.y; }
 
-    const bool& KeyPressed(const MouseKeys& keyCode) const noexcept { return _mouseStates[static_cast<UINT8>(keyCode)]; }
-    const bool KeyReleased(const MouseKeys& keyCode) const noexcept { return !_mouseStates[static_cast<UINT8>(keyCode)]; }
+    const bool& KeyPressed(const eMouseKeys& keyCode) const noexcept { return _mouseStates[static_cast<UINT8>(keyCode)]; }
+    const bool KeyReleased(const eMouseKeys& keyCode) const noexcept { return !_mouseStates[static_cast<UINT8>(keyCode)]; }
 
     //입력 상태 업데이트
     void Update();

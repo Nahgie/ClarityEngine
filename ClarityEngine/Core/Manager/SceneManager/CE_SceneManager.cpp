@@ -14,7 +14,6 @@ void CE_SceneManager::SaveScene(const std::wstring& sceneName, CE_SceneBase* con
 
     if (saveFlag)
     {
-        _sceneDatas.insert({ sceneName, nullptr });
         _sceneDatas[sceneName].reset(scene);
     }
     else
@@ -37,7 +36,7 @@ void CE_SceneManager::LoadScene(const std::wstring& sceneName)
     {
         static bool validFlag = false;
 
-        if (validFlag)              //최초 호출시 nullptr 참조 방지
+        if (validFlag)    //최초 호출시 nullptr 참조 방지
         {
             _sceneIt->second->Hide();
         }

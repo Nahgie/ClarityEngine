@@ -8,25 +8,24 @@ CE_Animator::CE_Animator
     const RECT& spriteStartSize,
     const UINT32& spriteOffset,
     const UINT8& frame,
-    const RenderDir& renderDir,
+    const eSpriteDir& spriteDir,
     const Vec4& color,
     const Vec2& scale,
     const FLOAT& rot,
     const FLOAT& depth
 )
     : Super(path, pos, color, scale, rot, depth)
+    , _spriteDirection(spriteDir)
+    , _offset(spriteOffset)
+    , _animFrame(frame)
+    , _stdFrameRate(GameMNGR->GetTargetFPS())
 {
-    _renderDirection = renderDir;
     _imgRenderSize = spriteStartSize;
-    _offset = spriteOffset;
-
-    _animFrame = frame;
-    _stdFrameRate = GameMNGR->GetTargetFPS();
 
     _imgPivot.x = static_cast<FLOAT>(spriteOffset / 2);
     _imgPivot.y = static_cast<FLOAT>(spriteOffset / 2);
 
-    SetRenderDirection(_renderDirection);
+    SetRenderDirection(_spriteDirection);
 }
 
 CE_Animator::~CE_Animator()
@@ -34,22 +33,25 @@ CE_Animator::~CE_Animator()
 
 }
 
-void CE_Animator::SetRenderDirection(const RenderDir& renderDir)
+void CE_Animator::SetRenderDirection(const eSpriteDir& spriteDir)
 {
     _frameData.resize(_animFrame);
 
-    switch (renderDir)
+    switch (spriteDir)
     {
-    case RenderDir::HORIZONTAL:
+    case eSpriteDir::HORIZONTAL:
 
-        _renderDirection = RenderDir::HORIZONTAL;
+        _spriteDirection = eSpriteDir::HORIZONTAL;
         HorizontalRender();
         break;
 
-    case RenderDir::VERTICAL:
+    case eSpriteDir::VERTICAL:
 
-        _renderDirection = RenderDir::VERTICAL;
+        _spriteDirection = eSpriteDir::VERTICAL;
         VerticalRender();
+        break;
+
+    default:
         break;
     }
 }

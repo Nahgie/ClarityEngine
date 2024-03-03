@@ -5,13 +5,13 @@
 #define GraphicsDXGI CE_GraphicsManager::GetInstance()->GetDXGI()
 #define GraphicsSWChain CE_GraphicsManager::GetInstance()->GetSWChain()
 
-enum class RenderFrameLimitMode : UINT8     //렌더링 싱크 조절법을 정의
+enum class eRenderLimitMode : UINT8     //렌더링 싱크 조절법을 정의
 {
-    UNLIMIT = 0,
-    V_SYNC = 1,
-    SINGLE_BUFFER = 2,
-    DOUBLE_BUFFER = 3,
-    TRIPLE_BUFFER = 4
+    UNLIMIT = (0x00),
+    V_SYNC = (0x01),
+    SINGLE_BUFFER = (0x02),
+    DOUBLE_BUFFER = (0x03),
+    TRIPLE_BUFFER = (0x04)
 };
 
 class CE_GraphicsManager final : public CE_Singleton<CE_GraphicsManager>
@@ -25,7 +25,7 @@ private:
     ComPtr<IMFDXGIDeviceManager> _dxgiManager = nullptr;
 
     //렌더링 싱크
-    RenderFrameLimitMode _renderState = RenderFrameLimitMode::UNLIMIT;
+    eRenderLimitMode _renderState = eRenderLimitMode::UNLIMIT;
 
     //뷰포트 정의
     UINT32 _dxgiResetToken = 0;
@@ -46,7 +46,7 @@ public:
     const ComPtr<IMFDXGIDeviceManager>& GetDXGI() const noexcept { return _dxgiManager; }
 
     void Init();
-    void SetRenderFrameLimitMode(const RenderFrameLimitMode& state) noexcept;
+    void SetRenderLimitMode(const eRenderLimitMode& state) noexcept;
     void RenderBegin();
     void RenderEnd();
 };

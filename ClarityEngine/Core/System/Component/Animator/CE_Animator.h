@@ -1,9 +1,9 @@
 ﻿#pragma once
 
-enum class RenderDir : UINT8    //스프라이트의 렌더링 방향 정의
+enum class eSpriteDir : UINT8    //스프라이트의 렌더링 방향 정의
 {
-    HORIZONTAL = 0,
-    VERTICAL = 1,
+    HORIZONTAL = (0x00),
+    VERTICAL = (0x01),
 };
 
 class CE_Animator final : public CE_Painter
@@ -14,7 +14,7 @@ private:
 
     std::vector<RECT> _frameData;
 
-    RenderDir _renderDirection{};
+    eSpriteDir _spriteDirection{};
 
     UINT32 _offset = 0;
     UINT8 _animFrame = 0;
@@ -35,7 +35,7 @@ public:
         const RECT& spriteStartSize,
         const UINT32& spriteOffset,
         const UINT8& frame,
-        const RenderDir& renderDir = RenderDir::HORIZONTAL,
+        const eSpriteDir& spriteDir = eSpriteDir::HORIZONTAL,
         const Vec4& color = { 1.f, 1.f, 1.f, 1.f },
         const Vec2& scale = { 1.f, 1.f },
         const FLOAT& rot = 0.f,
@@ -56,8 +56,8 @@ public:
     void SetAnimFrameRate(const DOUBLE& frameRate) noexcept { _stdFrameRate = frameRate; }
 
     //애니메이션을 재생하는 방향 값을 받거나 조정
-    const RenderDir& GetRenderDirection() const noexcept { return _renderDirection; }
-    void SetRenderDirection(const RenderDir& renderDir);
+    const eSpriteDir& GetRenderDirection() const noexcept { return _spriteDirection; }
+    void SetRenderDirection(const eSpriteDir& renderDir);
 
     //선형보간 기준 값을 받음
     const DOUBLE& GetFrameLerp() const noexcept { return _frameLerp; }

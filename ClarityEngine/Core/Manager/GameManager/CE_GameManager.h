@@ -1,14 +1,17 @@
 ﻿#pragma once
 #define GameMNGR CE_GameManager::GetInstance()
 
-constexpr UINT8 SECONDS(1 << 0);
-constexpr UINT8 FPS_NUM(1 << 0);
-constexpr UINT16 FPS_DEN(120);      //렌더링 목표 프레임
-
 class CE_GameManager final : public CE_Singleton<CE_GameManager>
 {
+private:
+
+    constexpr static UINT8 SECONDS{ 0x01 };
+    constexpr static UINT8 FPS_NUM{ 0x01 };
+    constexpr static UINT16 FPS_DEN{ 120 };      //렌더링 목표 프레임
+
     //chrono의 타이머를 using 문으로 축약
-    using frameRate = std::chrono::duration <UINT64, std::ratio<FPS_NUM, FPS_DEN>>;
+    using frameRate = std::chrono::duration<UINT64, std::ratio<FPS_NUM, FPS_DEN>>;
+    using deltaTimer = std::chrono::duration<DOUBLE, std::milli>;
     using setTimer = std::chrono::high_resolution_clock;
 
 private:
@@ -18,25 +21,29 @@ private:
     std::jthread _ASyncUpdateThread;
     std::jthread _gameUpdateThread;
 
+    DOUBLE _deltaTime = 0.0;
+
 private:
 
     void ASyncProcess();
     void GameProcess();
 
-    template <typename CLOCK, typename DURATION>
-    void FrameRateController(std::chrono::time_point<CLOCK, DURATION> timePoint);
+    /*template <typename CLOCK, typename DURATION>  //thread-sleep 프레임 제어
+    void FrameRateController(std::chrono::time_point<CLOCK, DURATION> timePoint);*/
 
 public:
 
     const UINT16& GetTargetFPS() const noexcept { return FPS_DEN; }
+    const DOUBLE& GetDeltaTime() const noexcept { return _deltaTime; }
 
     void Init();
     void GameQuit();
 };
 
-template<typename CLOCK, typename DURATION>
+//정밀한 프레임 계산(deltaTime)을 위해 thread-sleep 프레임 제어를 비활성화
+/*template<typename CLOCK, typename DURATION>
 inline void CE_GameManager::FrameRateController(std::chrono::time_point<CLOCK, DURATION> tPoint)
 {
-    std::this_thread::sleep_until(tPoint - std::chrono::microseconds(10)); //10us(마이크로초) 추가 대기 [쓰레드 쿨 다운]
+    std::this_thread::sleep_until(tPoint);
     while (tPoint >= CLOCK::now()) {};
-}
+}*/

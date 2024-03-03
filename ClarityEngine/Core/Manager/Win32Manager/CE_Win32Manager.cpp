@@ -10,6 +10,9 @@ LRESULT CE_Win32Manager::WndProc(HWND handle, UINT message, WPARAM wParam, LPARA
 
         WIN32::PostQuitMessage(0);
         break;
+
+    default:
+        break;
     }
     return WIN32::DefWindowProc(handle, message, wParam, lParam);
 }

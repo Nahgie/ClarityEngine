@@ -16,11 +16,10 @@ CE_Painter::CE_Painter
     , _imgRotation(rot)
     , _imgDepth(depth)
     , _imgColor(color)
+    , _texture(std::make_unique<DirectX::SpriteBatch>(GraphicsDevContext.Get()))
+    , _comState(std::make_unique<DirectX::CommonStates>(GraphicsDev.Get()))
 {
-    _texture = std::make_unique<DirectX::SpriteBatch>(GraphicsDevContext.Get());
     assert(_texture);
-
-    _comState = std::make_unique<DirectX::CommonStates>(GraphicsDev.Get());
     assert(_comState);
 
     Load();
@@ -73,24 +72,27 @@ void CE_Painter::Setup()
     }
 }
 
-void CE_Painter::SetFlip(const Dir& dir) noexcept
+void CE_Painter::SetFlip(const eRenderDir& renderDir) noexcept
 {
-    switch (dir)
+    switch (renderDir)
     {
-    case Dir::DEFAULT:
+    case eRenderDir::DEFAULT:
         _flipState = DirectX::SpriteEffects::SpriteEffects_None;
         break;
 
-    case Dir::HORIZONTAL:
+    case eRenderDir::HORIZONTAL:
         _flipState = DirectX::SpriteEffects::SpriteEffects_FlipHorizontally;
         break;
 
-    case Dir::VERTICAL:
+    case eRenderDir::VERTICAL:
         _flipState = DirectX::SpriteEffects::SpriteEffects_FlipVertically;
         break;
 
-    case Dir::BOTH:
+    case eRenderDir::BOTH:
         _flipState = DirectX::SpriteEffects::SpriteEffects_FlipBoth;
+        break;
+
+    default:
         break;
     }
 }

@@ -5,6 +5,7 @@
 //Windows
 #include <Windows.h>
 #include <windowsx.h>
+#include <Shlwapi.h>
 #include <wrl.h>
 
 //Windows Media Foundation
@@ -24,14 +25,15 @@
 #include <memory>
 #include <fstream>
 
-//CPP STL (DS)
+//CPP STL (Container)
 #include <string>
 #include <vector>
 #include <list>
 #include <stack>
 #include <queue>
 #include <map>
-#include <any>
+//#include <any>
+#include <variant>
 
 //CPP STL
 #include <numeric>
@@ -91,6 +93,9 @@
 #pragma comment(lib, "mfuuid.lib")
 #pragma comment(lib, "mfreadwrite.lib")
 
+//Interface for the Windows light-weight utility
+#pragma comment(lib, "Shlwapi.lib")
+
 //This lib supports x64(AMD64) only and should be built with /MT or /MTd compiler options
 #ifdef _DEBUG
     #pragma comment(lib, "DirectXTK_DBG.lib")
@@ -108,8 +113,8 @@
 //Engine Singleton Template
 #include "Core/Manager/CE_Singleton.h"
 
-//Engine Systems
-#include "Core/System/CE_SystemObjects.h"
-
 //Engine Managers
 #include "Core/Manager/CE_Managers.h"
+
+//Engine Systems
+#include "Core/System/CE_SystemObjects.h"

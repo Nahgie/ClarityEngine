@@ -1,6 +1,8 @@
 ﻿#pragma once
 #define SceneMNGR CE_SceneManager::GetInstance()
 
+class CE_SceneBase;     //Scene 전방선언
+
 class CE_SceneManager final : public CE_Singleton<CE_SceneManager>
 {
 private:

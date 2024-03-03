@@ -178,6 +178,7 @@
     <ClInclude Include="Core\System\Component\FileSystem\XML\CE_SaveXML.h" />
     <ClInclude Include="Core\System\Component\Painter\CE_Painter.h" />
     <ClInclude Include="Core\System\Utility\FlowControl\FlipFlop\CE_FlipFlop.h" />
+    <ClInclude Include="Core\System\Utility\PathFinder\CE_PathFinder.h" />
     <ClInclude Include="Core\System\Utility\ResNormalizer\CE_ResNormalizer.h" />
     <ClInclude Include="Core\System\Utility\SeedGenerator\CE_SeedGenerator.h" />
     <ClInclude Include="Core\System\Utility\FlowControl\Delay\CE_Delay.h" />
@@ -209,6 +210,7 @@
     <ClCompile Include="Core\System\Component\FileSystem\XML\CE_SaveXML.cpp" />
     <ClCompile Include="Core\System\Component\Painter\CE_Painter.cpp" />
     <ClCompile Include="Core\System\Utility\FlowControl\FlipFlop\CE_FlipFlop.cpp" />
+    <ClCompile Include="Core\System\Utility\PathFinder\CE_PathFinder.cpp" />
     <ClCompile Include="Core\System\Utility\ResNormalizer\CE_ResNormalizer.cpp" />
     <ClCompile Include="Core\System\Utility\SeedGenerator\CE_SeedGenerator.cpp" />
     <ClCompile Include="Core\System\Utility\FlowControl\Delay\CE_Delay.cpp" />

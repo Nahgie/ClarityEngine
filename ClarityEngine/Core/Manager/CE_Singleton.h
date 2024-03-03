@@ -10,7 +10,7 @@ private:
 protected:
 
     CE_Singleton() = default;
-    virtual ~CE_Singleton() = default;
+    ~CE_Singleton() = default;
 
     CE_Singleton(const CE_Singleton&) = delete;
     CE_Singleton& operator=(const CE_Singleton&) = delete;

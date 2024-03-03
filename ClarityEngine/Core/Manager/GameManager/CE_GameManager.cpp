@@ -22,10 +22,16 @@ void CE_GameManager::ASyncProcess()
 
 void CE_GameManager::GameProcess()
 {
-    auto timePoint = setTimer::now() + frameRate(SECONDS);
+    auto timePoint = setTimer::now() + frameRate(SECONDS); //목표 시간
+    auto prevTime = setTimer::time_point();                //이전 시간
+    auto currTime = setTimer::time_point();                //현재 시간
 
     while (_threadState.load())
     {
+        currTime = setTimer::now();                                              //현재 시간 측정
+        _deltaTime = std::chrono::duration<DOUBLE>(currTime - prevTime).count(); //델타 타임 계산
+        prevTime = currTime;                                                     //이전 시간
+
         GraphicsMNGR->RenderBegin();
         {
             SceneMNGR->SceneUpdate();
@@ -33,7 +39,9 @@ void CE_GameManager::GameProcess()
         }
         GraphicsMNGR->RenderEnd();
 
-        FrameRateController(timePoint);
+        while (timePoint >= setTimer::now()) {};    //BusyWait 프레임 제어
+        //FrameRateController(timePoint);           //thread-sleep 프레임 제어
+
         timePoint += frameRate(SECONDS);
     }
 }

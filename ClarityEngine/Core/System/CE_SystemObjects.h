@@ -32,3 +32,4 @@
 #include "Core/System/Utility/FlowControl/FlipFlop/CE_FlipFlop.h"
 #include "Core/System/Utility/ResNormalizer/CE_ResNormalizer.h"
 #include "Core/System/Utility/SeedGenerator/CE_SeedGenerator.h"
+#include "Core/System/Utility/PathFinder/CE_PathFinder.h"

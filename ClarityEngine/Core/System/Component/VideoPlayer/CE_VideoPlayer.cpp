@@ -43,16 +43,22 @@ void CE_VideoPlayer::StartUp()
     hr = factory->CreateInstance(flags, attributes.Get(), _mediaEngine.GetAddressOf());
     assert(SUCCEEDED(hr));
 
-    constexpr UINT16 MAX_SIZE(260);
-
-    WCHAR fullSrcPath[MAX_SIZE]{};
-
-    WIN32::GetFullPathNameW(_path.c_str(), MAX_SIZE, fullSrcPath, nullptr);
-
-    BSTR convertedSrcPath = WIN32::SysAllocString(fullSrcPath);
+    BSTR convertedSrcPath = WIN32::SysAllocString(_path.c_str());
 
     hr = _mediaEngine->SetSource(convertedSrcPath);
     assert(SUCCEEDED(hr));
+
+    if (FAILED(hr))
+    {
+        WIN32::MessageBoxW
+        (
+            Win32MNGR->GetWindowHandle(),
+            L"Media Source not found",
+            L"CRITICAL ERROR",
+            MB_ICONERROR
+        );
+        return;
+    }
 
     WIN32::SysFreeString(convertedSrcPath);
 

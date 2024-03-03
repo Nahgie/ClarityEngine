@@ -14,8 +14,8 @@ namespace ClarityEngine         //타입 재정의
     using Quaternion = DirectX::SimpleMath::Quaternion;
 
     //Math
-    constexpr DOUBLE CE_PI = 3.141592653589793;
-    constexpr DOUBLE CE_EPSILON = 0.000001;
+    constexpr DOUBLE CE_PI(3.141592653589793);
+    constexpr DOUBLE CE_EPSILON(0.000001);
     constexpr DOUBLE CE_DEG2RAD(CE_PI / 180.0);
     constexpr DOUBLE CE_RAD2DEG(180.0 / CE_PI);
 }

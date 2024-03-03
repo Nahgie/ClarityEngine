@@ -24,9 +24,9 @@ void CE_InputManager::Update()
 
     WIN32::ScreenToClient(Win32MNGR->GetWindowHandle(), &_clientCursorPos);
 
-    _mouseStates[static_cast<UINT8>(MouseKeys::LEFT)] = (WIN32::GetAsyncKeyState(VK_LBUTTON) & 0x8000) != false;
-    _mouseStates[static_cast<UINT8>(MouseKeys::RIGHT)] = (WIN32::GetAsyncKeyState(VK_RBUTTON) & 0x8000) != false;
-    _mouseStates[static_cast<UINT8>(MouseKeys::MIDDLE)] = (WIN32::GetAsyncKeyState(VK_MBUTTON) & 0x8000) != false;
-    _mouseStates[static_cast<UINT8>(MouseKeys::SIDE_UP)] = (WIN32::GetAsyncKeyState(VK_XBUTTON2) & 0x8000) != false;
-    _mouseStates[static_cast<UINT8>(MouseKeys::SIDE_DOWN)] = (WIN32::GetAsyncKeyState(VK_XBUTTON1) & 0x8000) != false;
+    _mouseStates[static_cast<UINT8>(eMouseKeys::LEFT)] = (WIN32::GetAsyncKeyState(VK_LBUTTON) & 0x8000) != false;
+    _mouseStates[static_cast<UINT8>(eMouseKeys::RIGHT)] = (WIN32::GetAsyncKeyState(VK_RBUTTON) & 0x8000) != false;
+    _mouseStates[static_cast<UINT8>(eMouseKeys::MIDDLE)] = (WIN32::GetAsyncKeyState(VK_MBUTTON) & 0x8000) != false;
+    _mouseStates[static_cast<UINT8>(eMouseKeys::SIDE_UP)] = (WIN32::GetAsyncKeyState(VK_XBUTTON2) & 0x8000) != false;
+    _mouseStates[static_cast<UINT8>(eMouseKeys::SIDE_DOWN)] = (WIN32::GetAsyncKeyState(VK_XBUTTON1) & 0x8000) != false;
 }

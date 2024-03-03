@@ -1,20 +1,20 @@
 ﻿#pragma once
 
-enum class Dir : UINT8      //렌더링 방향 정의
+enum class eRenderDir : UINT8      //렌더링 방향 정의
 {
-    DEFAULT = 0,
-    HORIZONTAL = 1,
-    VERTICAL = 2,
+    DEFAULT = (0x00),
+    HORIZONTAL = (0x01),
+    VERTICAL = (0x02),
     BOTH = (HORIZONTAL | VERTICAL)
 };
 
-enum class SortMode : UINT8
+enum class eSortMode : UINT8
 {
-    STACK = 0,      //스프라이트 데이터를 축적해 한 번에 렌더링
-    NO_WAIT = 1,    //스프라이트를 즉시 렌더링
-    TEX_QUEUE = 2,  //스프라이트를 텍스처별로 정렬 후 렌더링
-    FORWARD = 3,    //Depth가 감소하는 순서로 스프라이트를 렌더링 (뒤에서 앞으로)
-    BACKWARD = 4    //Depth가 증가하는 순서로 스프라이트를 렌더링 (앞에서 뒤로)
+    STACK = (0x00),      //스프라이트 데이터를 축적해 한 번에 렌더링
+    NO_WAIT = (0x01),    //스프라이트를 즉시 렌더링
+    TEX_QUEUE = (0x02),  //스프라이트를 텍스처별로 정렬 후 렌더링
+    FORWARD = (0x03),    //Depth가 감소하는 순서로 스프라이트를 렌더링 (뒤에서 앞으로)
+    BACKWARD = (0x04)    //Depth가 증가하는 순서로 스프라이트를 렌더링 (앞에서 뒤로)
 };
 
 class CE_Painter : public CE_GameObject
@@ -86,7 +86,7 @@ public:
     void SetPivot(const FLOAT& x, const FLOAT& y) noexcept { _imgPivot.x = x; _imgPivot.y = y; }
 
     //이미지 렌더링 방향
-    void SetFlip(const Dir& dir = Dir::DEFAULT) noexcept;
+    void SetFlip(const eRenderDir& renderDir = eRenderDir::DEFAULT) noexcept;
 
     //이미지 소스 변경
     void SetImage(const std::wstring& path) { _path = path; Load(); Setup(); }

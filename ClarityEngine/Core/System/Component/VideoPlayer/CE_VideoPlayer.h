@@ -41,8 +41,12 @@ public:
 
     Vec2 GetVideoRes() const noexcept { return Vec2(static_cast<FLOAT>(_videoSize.right), static_cast<FLOAT>(_videoSize.bottom)); }
     void SetVideoRes(const Vec2& res) { _videoSize.right = static_cast<LONG>(res.x); _videoSize.bottom = static_cast<LONG>(res.y); }
+
+    void SetVideoSrc(const std::wstring& srcPath) noexcept { _path = srcPath; }
+
     const DOUBLE& GetCurrentTime() const noexcept { return _mediaEngine->GetCurrentTime(); }
     const DOUBLE& GetDuration() const noexcept { return _mediaEngine->GetDuration(); }
+
     void SetCurrentTime(const DOUBLE& seekTime) { _mediaEngine->SetCurrentTime(seekTime); }
 };
 

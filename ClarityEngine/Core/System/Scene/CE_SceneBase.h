@@ -31,6 +31,7 @@ protected:
 
     void AddObject(const std::shared_ptr<CE_GameObject>& obj) noexcept; //Scene 그룹에 추가
     void DelObject(const std::shared_ptr<CE_GameObject>& obj);          //Scene 그룹에서 삭제
+    void ClrObject() noexcept;                                          //Scene 그룹 삭제
 
     template<typename T>
     void SetVariable(const std::wstring& key, const T& value);          //Scene에서 소멸시키지 않을 데이터를 저장

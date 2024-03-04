@@ -1,15 +1,14 @@
 ﻿#include "pch.h"
 #include "CE_PathFinder.h"
 
-std::wstring CE_PathFinder::_path;
-
-void CE_PathFinder::GetModulePath()
+CE_PathFinder::CE_PathFinder()
 {
     WCHAR calcPath[MAX_PATH];
 
     if (GetModuleFileNameW(nullptr, calcPath, MAX_PATH))
     {
-        for (UINT8 pathRemover = 0; pathRemover < 3; pathRemover++) //상위 디렉터리로 올라가는 횟수
+        //상위 디렉터리로 올라가는 횟수
+        for (UINT8 pathRemover = 0; pathRemover < 3; pathRemover++)
         {
             PathRemoveFileSpecW(calcPath);
         }
@@ -17,10 +16,13 @@ void CE_PathFinder::GetModulePath()
     }
 }
 
+CE_PathFinder::~CE_PathFinder()
+{
+
+}
+
 std::wstring CE_PathFinder::GetFullPath(const std::wstring& relPath)
 {
-    GetModulePath();
-
     WCHAR fullPath[MAX_PATH];
 
     std::wstring retPath;

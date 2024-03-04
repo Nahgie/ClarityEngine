@@ -48,6 +48,11 @@ void CE_VideoPlayer::StartUp()
     hr = _mediaEngine->SetSource(convertedSrcPath);
     assert(SUCCEEDED(hr));
 
+    hr = _mediaEngine->Load();
+    assert(SUCCEEDED(hr));
+
+    WIN32::SysFreeString(convertedSrcPath);
+
     if (FAILED(hr))
     {
         WIN32::MessageBoxW
@@ -59,8 +64,6 @@ void CE_VideoPlayer::StartUp()
         );
         return;
     }
-
-    WIN32::SysFreeString(convertedSrcPath);
 
     CreateTexture2D();
 }

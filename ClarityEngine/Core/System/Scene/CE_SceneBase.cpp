@@ -59,6 +59,11 @@ void CE_SceneBase::DelObject(const std::shared_ptr<CE_GameObject>& obj)
     }
 }
 
+void CE_SceneBase::ClrObject() noexcept
+{
+    _gameObject.clear();
+}
+
 void CE_SceneBase::Draw()
 {
     for (const auto& objs : _gameObject)

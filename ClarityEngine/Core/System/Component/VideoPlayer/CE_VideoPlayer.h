@@ -44,8 +44,8 @@ public:
 
     void SetVideoSrc(const std::wstring& srcPath) noexcept { _path = srcPath; }
 
-    const DOUBLE& GetCurrentTime() const noexcept { return _mediaEngine->GetCurrentTime(); }
-    const DOUBLE& GetDuration() const noexcept { return _mediaEngine->GetDuration(); }
+    DOUBLE GetCurrentTime() const noexcept { return _mediaEngine->GetCurrentTime(); }
+    DOUBLE GetDuration() const noexcept { return _mediaEngine->GetDuration(); }
 
     void SetCurrentTime(const DOUBLE& seekTime) { _mediaEngine->SetCurrentTime(seekTime); }
 };

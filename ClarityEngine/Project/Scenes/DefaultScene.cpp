@@ -3,14 +3,12 @@
 
 void DefaultScene::Create()      //Scene이 생성되면 호출됩니다.
 {
-    _assetPath = std::make_shared<PathFinder>();
+
 }
 
 void DefaultScene::Show()        //Scene에 진입하면 호출됩니다.
 {
-    std::wstring videoSrcPath = _assetPath->GetFullPath(L"Assets/Vid/sample.mp4");
-
-    this->SetVariable<std::wstring>(L"VideoPath", videoSrcPath);
+    this->SetVariable<std::wstring>(L"VideoPath", GetPATH(L"Assets/Vid/sample.mp4"));
     SceneMNGR->LoadScene(L"CREATOR");
 }
 

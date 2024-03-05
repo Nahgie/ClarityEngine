@@ -96,16 +96,22 @@
     <ClInclude Include="Core\System\Utility\FlowControl\Sequence\CE_Sequence.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Core\System\Utility\ResNormalizer\CE_ResNormalizer.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="Core\System\Utility\FlowControl\FlipFlop\CE_FlipFlop.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Project\Scenes\PatternCreatorScene.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Core\System\Utility\PathFinder\CE_PathFinder.h">
+    <ClInclude Include="Project\KeySystem\KeySystem.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Project\NoteSystem\NoteSystem.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Manager\ScreenManager\CE_ScreenManager.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Manager\PathManager\CE_PathManager.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
@@ -179,16 +185,22 @@
     <ClCompile Include="Core\System\Utility\FlowControl\Sequence\CE_Sequence.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Core\System\Utility\ResNormalizer\CE_ResNormalizer.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="Core\System\Utility\FlowControl\FlipFlop\CE_FlipFlop.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Project\Scenes\PatternCreatorScene.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Core\System\Utility\PathFinder\CE_PathFinder.cpp">
+    <ClCompile Include="Project\KeySystem\KeySystem.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Project\NoteSystem\NoteSystem.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Manager\ScreenManager\CE_ScreenManager.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Manager\PathManager\CE_PathManager.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

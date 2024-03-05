@@ -43,7 +43,6 @@ public:
     const bool& KeyPressed(const eMouseKeys& keyCode) const noexcept { return _mouseStates[static_cast<UINT8>(keyCode)]; }
     const bool KeyReleased(const eMouseKeys& keyCode) const noexcept { return !_mouseStates[static_cast<UINT8>(keyCode)]; }
 
-
     //입력 상태 업데이트
     void Update();
 };

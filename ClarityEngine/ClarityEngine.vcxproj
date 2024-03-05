@@ -169,6 +169,8 @@
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Core\Manager\PathManager\CE_PathManager.h" />
+    <ClInclude Include="Core\Manager\ScreenManager\CE_ScreenManager.h" />
     <ClInclude Include="Core\System\CE_SystemObjects.h" />
     <ClInclude Include="Core\System\Component\Animator\CE_Animator.h" />
     <ClInclude Include="Core\System\Component\AudioPlayer\CE_AudioPlayer.h" />
@@ -178,8 +180,6 @@
     <ClInclude Include="Core\System\Component\FileSystem\XML\CE_SaveXML.h" />
     <ClInclude Include="Core\System\Component\Painter\CE_Painter.h" />
     <ClInclude Include="Core\System\Utility\FlowControl\FlipFlop\CE_FlipFlop.h" />
-    <ClInclude Include="Core\System\Utility\PathFinder\CE_PathFinder.h" />
-    <ClInclude Include="Core\System\Utility\ResNormalizer\CE_ResNormalizer.h" />
     <ClInclude Include="Core\System\Utility\SeedGenerator\CE_SeedGenerator.h" />
     <ClInclude Include="Core\System\Utility\FlowControl\Delay\CE_Delay.h" />
     <ClInclude Include="Core\System\Component\Timer\CE_Timer.h" />
@@ -197,11 +197,15 @@
     <ClInclude Include="Core\System\Utility\FlowControl\DoOnce\CE_DoOnce.h" />
     <ClInclude Include="Core\System\Utility\FlowControl\Sequence\CE_Sequence.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="Project\KeySystem\KeySystem.h" />
+    <ClInclude Include="Project\NoteSystem\NoteSystem.h" />
     <ClInclude Include="Project\Scenes\PatternCreatorScene.h" />
     <ClInclude Include="Project\SceneWizard.h" />
     <ClInclude Include="Project\Scenes\DefaultScene.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Core\Manager\PathManager\CE_PathManager.cpp" />
+    <ClCompile Include="Core\Manager\ScreenManager\CE_ScreenManager.cpp" />
     <ClCompile Include="Core\System\Component\Animator\CE_Animator.cpp" />
     <ClCompile Include="Core\System\Component\AudioPlayer\CE_AudioPlayer.cpp" />
     <ClCompile Include="Core\System\Component\FileSystem\Binary\CE_BinLoad.cpp" />
@@ -210,8 +214,6 @@
     <ClCompile Include="Core\System\Component\FileSystem\XML\CE_SaveXML.cpp" />
     <ClCompile Include="Core\System\Component\Painter\CE_Painter.cpp" />
     <ClCompile Include="Core\System\Utility\FlowControl\FlipFlop\CE_FlipFlop.cpp" />
-    <ClCompile Include="Core\System\Utility\PathFinder\CE_PathFinder.cpp" />
-    <ClCompile Include="Core\System\Utility\ResNormalizer\CE_ResNormalizer.cpp" />
     <ClCompile Include="Core\System\Utility\SeedGenerator\CE_SeedGenerator.cpp" />
     <ClCompile Include="Core\System\Utility\FlowControl\Delay\CE_Delay.cpp" />
     <ClCompile Include="Core\System\Component\Timer\CE_Timer.cpp" />
@@ -235,6 +237,8 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">pch.h</PrecompiledHeaderFile>
     </ClCompile>
+    <ClCompile Include="Project\KeySystem\KeySystem.cpp" />
+    <ClCompile Include="Project\NoteSystem\NoteSystem.cpp" />
     <ClCompile Include="Project\Scenes\PatternCreatorScene.cpp" />
     <ClCompile Include="Project\SceneWizard.cpp" />
     <ClCompile Include="Project\Scenes\DefaultScene.cpp" />

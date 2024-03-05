@@ -7,7 +7,6 @@ class DefaultScene final : public CE_SceneBase
 private:
 
     std::shared_ptr<AudioPlayer> _audio = nullptr;
-    std::shared_ptr<PathFinder> _assetPath = nullptr;
 
 public:
 

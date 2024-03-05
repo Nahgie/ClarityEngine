@@ -73,6 +73,7 @@ public:
 
     //위치
     const Vec2& GetPos() const noexcept { return _imgPosition; }
+    void SetPos(const Vec2& pos) noexcept { _imgPosition = pos; }
     void SetPos(const FLOAT& x, const FLOAT& y) noexcept { _imgPosition.x = x; _imgPosition.y = y; }
     void SetX(const FLOAT& x) noexcept { _imgPosition.x = x; }
     void SetY(const FLOAT& y) noexcept { _imgPosition.y = y; }

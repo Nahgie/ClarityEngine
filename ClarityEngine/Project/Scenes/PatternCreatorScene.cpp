@@ -1,18 +1,13 @@
 ﻿#include "pch.h"
 #include "PatternCreatorScene.h"
+#include "Project/KeySystem/KeySystem.h"
 
 void PatternCreatorScene::Create()
 {
-    constexpr UINT16 TARGET_SCREEN_WIDTH(1280);
-    constexpr UINT16 TARGET_SCREEN_HEIGHT(720);
-
-    _res = std::make_shared<ResNormalizer>(TARGET_SCREEN_WIDTH, TARGET_SCREEN_HEIGHT);
-    _path = std::make_shared<PathFinder>();
-
     _image = std::make_shared<Painter>
         (
-            _path->GetFullPath(L"Assets/Img/chara_no_anim.png"),
-            _res->ToScreen(1280 / 2, 720 / 2)
+            GetPATH(L"Assets/Img/chara_no_anim.png"),
+            ScreenXY(0,0)
         );
 }
 
@@ -22,49 +17,86 @@ void PatternCreatorScene::Show()
 
     _video = std::make_shared<VideoPlayer>(realPath);
 
+    std::cerr << ScaleX(0.7) << " , " << ScaleY(0.7) << std::endl;
+    auto temp = ScaleXY(0.765432, 0.765432);
+    std::cerr << temp.x << " , " << temp.y << std::endl;
+
     this->AddObject(_video);
     this->AddObject(_image);
 }
 
-//임시 구현체
-void Press(const UINT32& keyCode, DoOnce& state, const std::function<void()>& press = []() {}, const std::function<void()>& released = []() {})
-{
-    if (InputMNGR->KeyPressed(keyCode) && NOT_PASSED(state))
-    {
-        state.Block();
-        press();
-    }
-
-    if (InputMNGR->KeyReleased(keyCode) && PASSED(state))
-    {
-        state.Reset();
-        released();
-    }
-}
-//임시 구현체
-
 void PatternCreatorScene::Update()
 {
-    static DoOnce leftKey;
-    static DoOnce upKey;
-    static DoOnce rightKey;
-    static DoOnce downKey;
+    //Video Controller
+    static DoOnce videoBackwardKey;
+    static DoOnce videoForwardKey;
+    static DoOnce videoStopKey;
+    static DoOnce videoVolumeUpKey;
+    static DoOnce videoVolumeDownKey;
 
-    if (InputMNGR->KeyPressed('A') && NOT_PASSED(leftKey))
-    {
-        leftKey.Block();
+    //Note Controller
+    static DoOnce noteCreateKey;
+    static DoOnce noteDeleteKey;
 
-        std::cerr << "A Pressed!\n";
-    }
+    KeySystem::PressOnce    //비디오 전면 프리뷰 
+    (
+        VK_LEFT,
+        videoBackwardKey,
+        [this]() { _video->SetCurrentTime(_video->GetCurrentTime() - _videoPrevTime); }
+    );
 
-    if (InputMNGR->KeyReleased('A') && PASSED(leftKey))
-    {
-        leftKey.Reset();
+    KeySystem::PressOnce    //비디오 후면 프리뷰
+    (
+        VK_RIGHT,
+        videoForwardKey,
+        [this]() { _video->SetCurrentTime(_video->GetCurrentTime() + _videoPrevTime); }
+    );
 
-        std::cerr << "A Released!\n";
-    }
+    KeySystem::PressOnce    //비디오 볼륨 업
+    (
+        VK_UP,
+        videoVolumeUpKey,
+        [this]() { _video->SetVolume(_videoVolume); }
+    );
 
-    Press('W', upKey, []() {std::cerr << "W Pressed!\n"; }, []() {std::cerr << "W Released!\n"; });
+    KeySystem::PressOnce    //비디오 볼륨 다운
+    (
+        VK_DOWN,
+        videoVolumeDownKey,
+        [this]() { _video->SetVolume(_videoVolume); }
+    );
+
+    KeySystem::PressOnce    //비디오 일시정지 및 재생
+    (
+        VK_SPACE,
+        videoStopKey,
+        [this]()
+        {
+            static FlipFlop videoState;
+            if (videoState.GetState()) { _video->Stop(); }
+            else { _video->Play(); } 
+        }
+    );
+
+    KeySystem::PressOnce    //노트 생성
+    (
+        VK_LBUTTON,
+        noteCreateKey,
+        [this]()
+        {
+            std::cerr << "Note Created!\n";
+        }
+    );
+
+    KeySystem::PressOnce    //노트 생성
+    (
+        VK_RBUTTON,
+        noteDeleteKey,
+        [this]()
+        {
+            std::cerr << "Note Deleted!\n";
+        }
+    );
 }
 
 void PatternCreatorScene::ASyncUpdate()

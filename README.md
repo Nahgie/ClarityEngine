@@ -1,8 +1,7 @@
-# ClarityEngine for DX11
+# ClarityEngine for DX11 [Deprecated]
 
-사용하기에 간편한 2D게임 엔진을 목표로 개발하고 있습니다.
+Clarity2D로 프로젝트가 이관되었습니다.
 
-안정화 버전이 아니므로 얼마든지 내부 구조가 바뀔 수 있으니 사용 시 주의하시길 바랍니다.
 
 ## 개발 환경
 | 항목                                           | URL                                                                           |
